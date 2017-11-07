@@ -1,6 +1,6 @@
-package kz.epam.tam.module3.lecture2.utils;
+package kz.epam.tam.module3.lecture2.task1.utils;
 
-import kz.epam.tam.module3.lecture2.TaxiStation;
+import kz.epam.tam.module3.lecture2.task1.TaxiStation;
 
 import java.util.Comparator;
 

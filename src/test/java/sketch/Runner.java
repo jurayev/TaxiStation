@@ -1,4 +1,4 @@
-package scratch;/*package kz.epam.tam.module3.lecture2.runner;
+package sketch;/*package kz.epam.tam.module3.lecture2.runner;
 
 import kz.epam.tam.module3.lecture2.Car;
 import kz.epam.tam.module3.lecture2.TaxiStation;

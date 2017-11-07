@@ -1,7 +1,7 @@
-package kz.epam.tam.module3.lecture2.utils;
+package kz.epam.tam.module3.lecture2.task1.utils;
 
-import kz.epam.tam.module3.lecture2.Car;
-import kz.epam.tam.module3.lecture2.Van;
+import kz.epam.tam.module3.lecture2.task1.Car;
+import kz.epam.tam.module3.lecture2.task1.Van;
 
 import java.util.ArrayList;
 import java.util.List;
