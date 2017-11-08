@@ -1,4 +1,4 @@
-package sketch;
+package lecture2.sketch;
 
 import kz.epam.tam.module3.lecture2.task1.Car;
 import kz.epam.tam.module3.lecture2.task1.TaxiStation;
