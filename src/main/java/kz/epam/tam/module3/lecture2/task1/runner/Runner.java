@@ -72,7 +72,7 @@ public class Runner {
                     System.out.println("2 - Van");
                     int type = scanner.nextInt();
                      if (type == 1){
-                         carList = AddAVehicleToStation.fillBaseCharacteristicsCar(scanner);
+                         carList = AddAVehicleToStation.fillBaseCharacteristicsCar();
                          vehicleList.addAll(carList);
                          System.out.println("Completed!");
                      }
@@ -109,11 +109,12 @@ public class Runner {
                     int n = scanner.nextInt();
                     if (n == 1){
                         System.out.println("Type a car parameter to search.");
-                        String param = sc.nextLine();
+                        scanner.nextLine();
+                        String param = scanner.nextLine();
                         FindByParameter.findACarByParameter(param,carList);
                     }else if (n == 2){
                         System.out.println("Type a van parameter to search.");
-                        String param = sc.nextLine();
+                        String param = scanner.nextLine();
                         FindByParameter.findAVanByParameter(param,vanList);
                     }
                     else{
