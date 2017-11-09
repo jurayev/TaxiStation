@@ -2,17 +2,36 @@ package kz.epam.tam.module3.lecture2.task1.utils;
 
 import kz.epam.tam.module3.lecture2.task1.Car;
 import kz.epam.tam.module3.lecture2.task1.Van;
+import kz.epam.tam.module3.lecture2.task1.data.parser.TxtFileReader;
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
 public class AddAVehicleToStation {
-
+    private  static final String ABS_PATH_TO_CAR_TXT = "D:\\JavaProjects\\TaxiStation\\car.txt";
+    private  static final String ABS_PATH_TO_VAN_TXT = "D:\\JavaProjects\\TaxiStation\\van.txt";
     private static Scanner sc = new Scanner(System.in);
 
     public static List<Car> fillBaseCharacteristicsCar(){
+        List<Car> carList  = new ArrayList<>();
+        TxtFileReader data = new TxtFileReader();
+        String[][] info = data.readFile(ABS_PATH_TO_CAR_TXT);
+        for(int i =0; i < info.length; i++){
+        carList.add(new Car(info[i][0],Long.parseLong(info[i][1]),Integer.parseInt(info[i][2]),info[i][3]));
+        }
+        return carList;
+    }
+    public static List<Van> fillBaseCharacteristicsVan(){
+        TxtFileReader data = new TxtFileReader();
+        List<Van> vanList  = new ArrayList<>();
+        String[][] info = data.readFile(ABS_PATH_TO_VAN_TXT);
+        for(int i =0; i < info.length; i++){
+            vanList.add(new Van(info[i][0],Long.parseLong(info[i][1]),Integer.parseInt(info[i][2]),Integer.parseInt(info[i][3]),info[i][4]));
+        }
+        return vanList;
+    }
+    /*public static List<Car> fillBaseCharacteristicsCar(){
         Integer price = null;
         Integer cons = null;
         List<Car> carList  = new ArrayList<>();
@@ -60,5 +79,5 @@ public class AddAVehicleToStation {
         int nseats = scanner.nextInt();
         vanList.add(new Van(model,price,cons,nseats,ftype));
         return vanList;
-    }
+    }*/
 }

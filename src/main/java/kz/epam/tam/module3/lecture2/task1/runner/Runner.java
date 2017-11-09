@@ -77,7 +77,7 @@ public class Runner {
                          System.out.println("Completed!");
                      }
                      else if(type == 2){
-                         vanList = AddAVehicleToStation.fillBaseCharacteristicsVan(scanner);
+                         vanList = AddAVehicleToStation.fillBaseCharacteristicsVan();
                          vehicleList.addAll(vanList);
                          System.out.println("Completed!");
                      }
@@ -100,6 +100,7 @@ public class Runner {
                     for (int i = 0; i < vehicleList.size(); i++){
                         System.out.println(vehicleList.get(i).getInfo());
                     }
+                    System.out.println("Completed!");
                     break;
                 case 4:
                     System.out.println("Find a vehicle by parameter.");
@@ -112,14 +113,17 @@ public class Runner {
                         scanner.nextLine();
                         String param = scanner.nextLine();
                         FindByParameter.findACarByParameter(param,carList);
+                        System.out.println("Completed!");
                     }else if (n == 2){
                         System.out.println("Type a van parameter to search.");
                         String param = scanner.nextLine();
                         FindByParameter.findAVanByParameter(param,vanList);
+                        System.out.println("Completed!");
                     }
                     else{
                         System.out.println("Incorrect choice. Please try again!");
                     }
+
                     break;
                 default:
                     System.out.println("Incorrect choice. Please try again!");
