@@ -1,0 +1,6 @@
+chevy,4000,15,9,gas
+buick,4000,16,12,diesel
+buick,4000,17,12,diesel
+buick,4000,18,12,diesel
+buick,4000,19,12,diesel
+buick,4000,20,12,diesel
