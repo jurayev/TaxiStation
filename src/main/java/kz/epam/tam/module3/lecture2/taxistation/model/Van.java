@@ -1,4 +1,4 @@
-package kz.epam.tam.module3.lecture2.task1;
+package kz.epam.tam.module3.lecture2.taxistation.model;
 
 public class Van extends TaxiStation {
     private static final String TYPE = "Van" ;

@@ -1,4 +1,4 @@
-package kz.epam.tam.module3.lecture2.task1.data.writer;
+package kz.epam.tam.module3.lecture2.taxistation.data.writer;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;

@@ -1,12 +1,15 @@
-package kz.epam.tam.module3.lecture2.task1.runner;
+package kz.epam.tam.module3.lecture2.taxistation.runner;
 
-import kz.epam.tam.module3.lecture2.task1.Car;
-import kz.epam.tam.module3.lecture2.task1.TaxiStation;
-import kz.epam.tam.module3.lecture2.task1.data.writer.TxtFileWriter;
-import kz.epam.tam.module3.lecture2.task1.utils.AddAVehicleToStation;
-import kz.epam.tam.module3.lecture2.task1.utils.FindByParameter;
-import kz.epam.tam.module3.lecture2.task1.utils.FuelConsumptionComparator;
-import kz.epam.tam.module3.lecture2.task1.Van;
+import kz.epam.tam.module3.lecture2.taxistation.model.Car;
+import kz.epam.tam.module3.lecture2.taxistation.model.TaxiStation;
+import kz.epam.tam.module3.lecture2.taxistation.data.writer.TxtFileWriter;
+import kz.epam.tam.module3.lecture2.taxistation.exception.EmptySearchResultException;
+import kz.epam.tam.module3.lecture2.taxistation.exception.InvalidDataException;
+import kz.epam.tam.module3.lecture2.taxistation.exception.InvalidListSizeException;
+import kz.epam.tam.module3.lecture2.taxistation.utils.AddAVehicleToStation;
+import kz.epam.tam.module3.lecture2.taxistation.utils.FindByParameter;
+import kz.epam.tam.module3.lecture2.taxistation.utils.FuelConsumptionComparator;
+import kz.epam.tam.module3.lecture2.taxistation.model.Van;
 
 import java.util.*;
 
@@ -112,11 +115,15 @@ public class Runner {
                 System.out.println("Oops, invalid data. Data must be only numeric. Please try again!");
             }catch (NullPointerException npe){
                 System.out.println("Oops, number of vehicle you try to add is more than resource file contains. Please try again!");
-            }
-            catch (NegativeArraySizeException naze){
+            }catch (NegativeArraySizeException e){
                 System.out.println("Oops, negative number is prohibited. Please try again!");
+            }catch (InvalidListSizeException e){
+                System.out.println(e.getMessage() + " Actual number of fields is " + e.getExceptionCause() + ". Please check an input data and try again!");
+            }catch (EmptySearchResultException e){
+                System.out.println(e.getMessage());
+            }catch (InvalidDataException ide){
+                System.out.println(ide.getMessage() + "Found: price is " + ide.getExceptionPrice() + ", consumption is " + ide.getExceptionConsumption());
             }
-
         }
     }
 }

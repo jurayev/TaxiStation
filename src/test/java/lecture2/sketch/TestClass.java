@@ -1,9 +1,9 @@
 package lecture2.sketch;
 
-import kz.epam.tam.module3.lecture2.task1.Car;
-import kz.epam.tam.module3.lecture2.task1.TaxiStation;
-import kz.epam.tam.module3.lecture2.task1.utils.FuelConsumptionComparator;
-import kz.epam.tam.module3.lecture2.task1.Van;
+import kz.epam.tam.module3.lecture2.taxistation.model.Car;
+import kz.epam.tam.module3.lecture2.taxistation.model.TaxiStation;
+import kz.epam.tam.module3.lecture2.taxistation.utils.FuelConsumptionComparator;
+import kz.epam.tam.module3.lecture2.taxistation.model.Van;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;

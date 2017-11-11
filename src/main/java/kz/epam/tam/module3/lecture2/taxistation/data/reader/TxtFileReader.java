@@ -1,4 +1,4 @@
-package kz.epam.tam.module3.lecture2.task1.data.reader;
+package kz.epam.tam.module3.lecture2.taxistation.data.reader;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -6,7 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class TxtFileReader {
+public class TxtFileReader{
 
     public String[][] readFile(String absPath){
         BufferedReader reader = null;

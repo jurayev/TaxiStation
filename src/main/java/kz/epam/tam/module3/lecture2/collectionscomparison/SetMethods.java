@@ -1,4 +1,4 @@
-package kz.epam.tam.module3.lecture2.task2;
+package kz.epam.tam.module3.lecture2.collectionscomparison;
 
 import java.util.HashSet;
 import java.util.TreeSet;

@@ -1,8 +1,8 @@
-package kz.epam.tam.module3.lecture2.task2.runner;
+package kz.epam.tam.module3.lecture2.collectionscomparison.runner;
 
-import kz.epam.tam.module3.lecture2.task2.ListMethods;
-import kz.epam.tam.module3.lecture2.task2.MapMethods;
-import kz.epam.tam.module3.lecture2.task2.SetMethods;
+import kz.epam.tam.module3.lecture2.collectionscomparison.ListMethods;
+import kz.epam.tam.module3.lecture2.collectionscomparison.MapMethods;
+import kz.epam.tam.module3.lecture2.collectionscomparison.SetMethods;
 
 import java.util.Scanner;
 
