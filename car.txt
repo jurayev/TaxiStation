@@ -1,2 +1,0 @@
-bmw,4000,15,sedan
-audi,4000,15,sedan
