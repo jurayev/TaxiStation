@@ -7,51 +7,51 @@ import java.util.List;
 
 public class FindByParameter {
 
-    public static void findACarByParameter(String value, List<Car> list){
-
+    public static String findACarByParameter(String value, List<Car> list){
+        String carOutput = "Search result:";
         for( Car car : list){
             Integer fuelConsumption = car.getFuelConsumption();
             Long vehiclePrice = car.getVehiclePrice();
             if(value.equals(car.getModel())){
-                System.out.println(car.getInfo());
+                carOutput += "\n" + car.getInfo();
             }
             else if(value.equals(fuelConsumption.toString())){
-                System.out.println(car.getInfo());
+                carOutput += "\n" + car.getInfo();
             }
             else if(value.equals(vehiclePrice.toString())){
-                System.out.println(car.getInfo());
+                carOutput += "\n" + car.getInfo();
             }
             else if(value.equals(car.getBodytype())){
-                System.out.println(car.getInfo());
+                carOutput += "\n" + car.getInfo();
             }
-            /*else{
-                System.out.println("Sorry,could not find anything by:" + value);
-
-            }*/
         }
+        System.out.println(carOutput);
+        return carOutput;
     }
-    public static void findAVanByParameter(String value, List<Van> list){
-
+    public static String findAVanByParameter(String value, List<Van> list){
+        String carOutput = "Search result:";
         for( Van van : list){
             Integer fuelConsumption = van.getFuelConsumption();
             Long vehiclePrice = van.getVehiclePrice();
             Integer numberOfSeats = van.getNumberOfSeats();
             if(value.equals(van.getModel())){
-                System.out.println(van.getInfo());
+                carOutput += "\n" + van.getInfo();
             }
             else if(value.equals(fuelConsumption.toString())){
-                System.out.println(van.getInfo());
+                carOutput += "\n" + van.getInfo();
             }
             else if(value.equals(vehiclePrice.toString())){
-                System.out.println(van.getInfo());
+                carOutput += "\n" + van.getInfo();
             }
             else if(value.equals(van.getFuelType())){
-                System.out.println(van.getInfo());
+                carOutput += "\n" + van.getInfo();
             }
             else if(value.equals(numberOfSeats.toString())){
-                System.out.println(van.getInfo());
+                carOutput += "\n" + van.getInfo();
             }
         }
+        System.out.println(carOutput);
+        return carOutput;
     }
 }
 
