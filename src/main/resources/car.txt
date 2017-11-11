@@ -1,6 +1,6 @@
-benz,000,15,sedan
-benz,4000,15,sedan
-benz,4000,17,vagon
+benz,2000,17,avante
+benz,40=0 0++,2sdfsdf0   !@$#$^#$^,hatchback
+benz,4000,0,vagon
 benz,4000,18,sedan
 benz,4000,19,hatchback
-benz,4-0=0 0++,2sdfsdf0   !@$#$^#$^,hatchback
+benz,0=0 0++,2sdfsdf0   !@$#$^#$^,hatchback
