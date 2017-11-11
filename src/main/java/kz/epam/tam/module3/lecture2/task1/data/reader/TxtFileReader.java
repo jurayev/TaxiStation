@@ -1,4 +1,4 @@
-package kz.epam.tam.module3.lecture2.task1.data.parser;
+package kz.epam.tam.module3.lecture2.task1.data.reader;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -22,8 +22,7 @@ public class TxtFileReader {
             }
         }catch(FileNotFoundException e){
             System.out.println(e.getMessage());
-        }
-        catch (IOException ee){
+        }catch (IOException ee){
             ee.getMessage();
         }
         finally {
