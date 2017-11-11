@@ -26,7 +26,7 @@ public class TestClass {
         String line = null;
         String[] data = {};
         try{
-            reader = new BufferedReader(new FileReader("D:\\JavaProjects\\TaxiStation\\file.txt"));
+            reader = new BufferedReader(new FileReader("c:\\automation\\TaxiStation\\car.txt"));
             while ((line = reader.readLine()) != null) {
                  data = line.split(" ");
             }
@@ -48,17 +48,37 @@ public class TestClass {
         }
 
     }
-    @Test
-    public void writeToFileTest() {
+    public static void writeToFileTest(String text) {
         String str;
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("D:\\JavaProjects\\TaxiStation\\results.txt"));
-            String text = "ashdaysdy\n213\nsjdjasdjkasjdn\nasdhahsd";
-            writer.write(text);
+            BufferedWriter writer = new BufferedWriter(new FileWriter("c:\\automation\\TaxiStation\\results.txt"));
+            writer.newLine();
+            writer.append(text);
+            writer.flush();
+            writer.newLine();
+            writer.append(text);
+            writer.flush();
+            writer.newLine();
+            writer.append(text);
             writer.flush();
         }catch (IOException e){
             System.out.println(e.getMessage());
         }
+    }
+
+    @Test
+    public void writerTest(){
+        TestClass.writeToFileTest("text to append1");
+        TestClass.writeToFileTest("text to append2");
+    }
+
+    @Test
+    public void replaceAllTest(){
+        String somestr = "-asd5";
+        System.out.println(somestr);
+        String newstr = somestr.replaceAll("[^0-9]", "");
+        System.out.println(newstr);
+
     }
 
 }
