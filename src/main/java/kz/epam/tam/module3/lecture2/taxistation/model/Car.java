@@ -4,6 +4,8 @@ public class Car extends TaxiStation {
     private static final String TYPE = "Car" ;
     private String bodyType;
 
+    public Car(){super();}
+
     public Car(String model, long vehiclePrice,int fuelConsumption,String bodyType){
         super(model, vehiclePrice, fuelConsumption);
         this.bodyType = bodyType;

@@ -1,4 +1,4 @@
-package kz.epam.tam.module3.lecture2.taxistation.data.reader;
+package kz.epam.tam.module3.lecture2.taxistation.data.readers;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -6,12 +6,12 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class TxtFileReader{
+public class TXTFileReader {
 
-    public String[][] readFile(String absPath){
+    public String[][] readData(String absPath){
         BufferedReader reader = null;
         String line;
-        System.out.println("Please enter number of Vehicle to be added");
+        System.out.println("Please enter number of AddCarsToListJsonHelper to be added");
         int n = new Scanner(System.in).nextInt();
         String[][] data= new String[n][];
         try{

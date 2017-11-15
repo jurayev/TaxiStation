@@ -1,12 +1,15 @@
 package kz.epam.tam.module3.lecture2.taxistation.runner;
 
+import kz.epam.tam.module3.lecture2.taxistation.data.readers.DBReader;
+import kz.epam.tam.module3.lecture2.taxistation.data.readers.JSONReader;
 import kz.epam.tam.module3.lecture2.taxistation.model.Car;
 import kz.epam.tam.module3.lecture2.taxistation.model.TaxiStation;
-import kz.epam.tam.module3.lecture2.taxistation.data.writer.TxtFileWriter;
+import kz.epam.tam.module3.lecture2.taxistation.data.writers.TxtFileWriter;
 import kz.epam.tam.module3.lecture2.taxistation.exception.EmptySearchResultException;
 import kz.epam.tam.module3.lecture2.taxistation.exception.InvalidDataException;
 import kz.epam.tam.module3.lecture2.taxistation.exception.InvalidListSizeException;
-import kz.epam.tam.module3.lecture2.taxistation.utils.AddAVehicleToStation;
+import kz.epam.tam.module3.lecture2.taxistation.utils.AddAVehicleFromTXT;
+import kz.epam.tam.module3.lecture2.taxistation.utils.AddAVehicleFromXML;
 import kz.epam.tam.module3.lecture2.taxistation.utils.FindByParameter;
 import kz.epam.tam.module3.lecture2.taxistation.utils.FuelConsumptionComparator;
 import kz.epam.tam.module3.lecture2.taxistation.model.Van;
@@ -55,18 +58,52 @@ public class Runner {
                         System.out.println("1 - Car");
                         System.out.println("2 - Van");
                         int type = scanner.nextInt();
-                         if (type == 1){
-                             carList = AddAVehicleToStation.fillBaseCharacteristicsCar();
-                             vehicleList.addAll(carList);
-                             System.out.println("Completed!");
-                         }
-                         else if(type == 2){
-                             vanList = AddAVehicleToStation.fillBaseCharacteristicsVan();
-                             vehicleList.addAll(vanList);
-                             System.out.println("Completed!");
-                         }
-                         else{System.out.println("Incorrect choice. Please try again!");
-                         }
+                        if(type == 1){
+                            System.out.println("Choose a reader");
+                            System.out.println("1 - TXT");
+                            System.out.println("2 - XML");
+                            System.out.println("3 - JSON");
+                            System.out.println("4 - DB");
+                            int reader = scanner.nextInt();
+                            if(reader == 1){
+                                AddAVehicleFromTXT vehicle = new AddAVehicleFromTXT();
+                                carList = vehicle.fillBaseCharacteristicsCar();
+                                vehicleList.addAll(carList);
+                            }else if(reader == 2){
+                                AddAVehicleFromXML vehicle = new AddAVehicleFromXML();
+                                carList = vehicle.fillBaseCharacteristicsCar();
+                                vehicleList.addAll(carList);
+                            }else if(reader == 3){
+                                JSONReader vehicle = new JSONReader();
+                                carList = vehicle.readData("src\\main\\resources\\cars.json");
+                                vehicleList.addAll(carList);
+                            }else if(reader == 4){
+                                DBReader vehicle = new DBReader();
+                                carList = vehicle.readData();
+                                vehicleList.addAll(carList);
+                            }else{
+                                System.out.println("Incorrect choice. Please try again!");
+                            }
+                            System.out.println("Completed!");
+                        }
+                        else if(type == 2){
+                            System.out.println("First of all,choose a reader");
+                            System.out.println("1 - TXT");
+                            System.out.println("2 - XML");
+                            int reader = scanner.nextInt();
+                            if(reader == 1){
+                                AddAVehicleFromTXT vehicle = new AddAVehicleFromTXT();
+                                vanList = vehicle.fillBaseCharacteristicsVan();
+                                vehicleList.addAll(vanList);
+                                System.out.println("Completed!");
+                            }else if(reader == 2){
+                                AddAVehicleFromXML vehicle = new AddAVehicleFromXML();
+                                vanList = vehicle.fillBaseCharacteristicsVan();
+                                vehicleList.addAll(vanList);
+                            }else{
+                                System.out.println("Incorrect choice. Please try again!");
+                            }
+                        }
                         break;
                     case 2:
                         System.out.println("Count taxi station budget");

@@ -2,7 +2,7 @@ package kz.epam.tam.module3.lecture2.taxistation.utils;
 
 import kz.epam.tam.module3.lecture2.taxistation.model.Car;
 import kz.epam.tam.module3.lecture2.taxistation.model.Van;
-import kz.epam.tam.module3.lecture2.taxistation.data.reader.TxtFileReader;
+import kz.epam.tam.module3.lecture2.taxistation.data.readers.TXTFileReader;
 import kz.epam.tam.module3.lecture2.taxistation.exception.InvalidDataException;
 import kz.epam.tam.module3.lecture2.taxistation.exception.InvalidListSizeException;
 
@@ -10,14 +10,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class AddAVehicleToStation {///extends AddException
+public class AddAVehicleFromTXT implements VehicleCreator{
     private  static final String PATH_TO_CAR_TXT = "src\\main\\resources\\car.txt";
     private  static final String PATH_TO_VAN_TXT = "src\\main\\resources\\van.txt";
 
-    public static List<Car> fillBaseCharacteristicsCar() throws InvalidListSizeException, InvalidDataException {
+    @Override
+    public List<Car> fillBaseCharacteristicsCar() throws InvalidListSizeException, InvalidDataException  {
         List<Car> carList = new ArrayList<>();
-        TxtFileReader data = new TxtFileReader();
-        String[][] info = data.readFile(PATH_TO_CAR_TXT);
+        TXTFileReader data = new TXTFileReader();
+        String[][] info = data.readData(PATH_TO_CAR_TXT);
         for(int i = 0; i < info.length; i++) {
             if (info[i].length != 4) {
                 throw new InvalidListSizeException("A car must contain 4 obligatory fields.",info[i].length);
@@ -48,10 +49,10 @@ public class AddAVehicleToStation {///extends AddException
         }
         return carList;
     }
-    public static List<Van> fillBaseCharacteristicsVan() throws InvalidListSizeException, InvalidDataException{
-        TxtFileReader data = new TxtFileReader();
+    public List<Van> fillBaseCharacteristicsVan() throws InvalidListSizeException, InvalidDataException{
+        TXTFileReader data = new TXTFileReader();
         List<Van> vanList  = new ArrayList<>();
-        String[][] info = data.readFile(PATH_TO_VAN_TXT);
+        String[][] info = data.readData(PATH_TO_VAN_TXT);
         for(int i =0; i < info.length; i++){
             if (info[i].length != 5) {
                 throw new InvalidListSizeException("A van must contain 5 obligatory fields.");

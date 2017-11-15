@@ -5,6 +5,7 @@ public class Van extends TaxiStation {
     private int numberOfSeats;
     private String fuelType;
 
+    public Van(){super();}
     public Van(String model, long vehiclePrice, int fuelConsumption, int numberOfSeats, String fuelType){
         super(model, vehiclePrice, fuelConsumption);
         this.numberOfSeats = numberOfSeats;

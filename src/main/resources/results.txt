@@ -2,9 +2,4 @@ All results are recorded
 Budget is 0;
 Sort By fuel consumption:
 [];
-Search result:
-Model: buick, Price: 4000, Fuel consumption: 16, Fuel: diesel, Number of seats: 12
-Model: buick, Price: 4000, Fuel consumption: 17, Fuel: diesel, Number of seats: 12
-Model: buick, Price: 4000, Fuel consumption: 18, Fuel: diesel, Number of seats: 12
-Model: buick, Price: 4000, Fuel consumption: 19, Fuel: diesel, Number of seats: 12
-Model: buick, Price: 4000, Fuel consumption: 20, Fuel: diesel, Number of seats: 12
+Search result is empty

@@ -1,11 +1,15 @@
 package kz.epam.tam.module3.lecture2.taxistation.model;
 
+import java.util.List;
+
 public class TaxiStation {
 
     protected long vehiclePrice;
     protected int fuelConsumption;
     protected String model;
 
+
+    public TaxiStation(){}
     public TaxiStation(String model,long vehiclePrice,int fuelConsumption){
         this.vehiclePrice = vehiclePrice;
         this.fuelConsumption = fuelConsumption;
@@ -34,5 +38,4 @@ public class TaxiStation {
     public String getInfo(){
         return "Model: " + this.model + ", Price: " + this.vehiclePrice + ", Fuel consumption: " + this.fuelConsumption;
     }
-///add abstract method
 }
