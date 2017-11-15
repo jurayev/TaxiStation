@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class DBReader {
+public class DBReader implements IReader{
 
     private static final ResourceBundle configBundle = ResourceBundle.getBundle("database");
     private static  final String SQL_SELECT = "SELECT * FROM CARS";
@@ -30,11 +30,8 @@ public class DBReader {
             statement = con.createStatement();
             rs = statement.executeQuery(SQL_SELECT);
             while (rs.next()){
-                data.add(new Car(rs.getString("model"),rs.getInt("price"),rs.getInt("consumption"),rs.getString("body")));
-                System.out.println(rs.getString("model"));
-                System.out.println(rs.getInt("price"));
-                System.out.println(rs.getInt("consumption"));
-                System.out.println(rs.getString("body"));
+                data.add(new Car(rs.getString("model"),rs.getInt("price"),
+                        rs.getInt("consumption"),rs.getString("body")));
             }
         } catch (SQLException e) {
             e.printStackTrace();

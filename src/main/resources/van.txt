@@ -1,7 +1,0 @@
-chevy,40dfg0dfg0,15,-15,gas
-buick,2000,16,12,diesel
-buick,4000,17,12,diesel
-buick,4000,18,-12,diesel
-buick,4000,19,12,diesel
-buick,4a ds da000,2---+++0,1!@$#$2,diesel
-chevy,4000,22,12,diesel

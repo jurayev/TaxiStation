@@ -1,7 +1,6 @@
 package kz.epam.tam.module3.lecture2.taxistation.model;
 
 public class Car extends TaxiStation {
-    private static final String TYPE = "Car" ;
     private String bodyType;
 
     public Car(){super();}
@@ -17,7 +16,7 @@ public class Car extends TaxiStation {
     public void setBodyType(String bodyType){
         this.bodyType = bodyType;
     }
-///add getInfo method
+
     public String getInfo(){
         return super.getInfo() + ", Body type: " + this.bodyType;
     }

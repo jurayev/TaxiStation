@@ -9,19 +9,17 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.List;
 
-public class JSONReader {
+public class JSONReader implements IReader {
 
     private static String ABS_PATH = "src\\main\\resources\\cars.json";
-    private static String STRING = "{\"cars\": [{\"vehiclePrice\":4000,\"bodyType\":\"sedann\",\"fuelConsumption\":11,\"model\":\"kiaa\"}," +
-            "{\"bodyType\":\"sedan\",\"vehiclePrice\":4000,\"fuelConsumption\":11,\"model\":\"benz\"}," +
-            "{\"bodyType\":\"sedan\",\"vehiclePrice\":4000,\"fuelConsumption\":11,\"model\":\"mazda\"}]}";
-    public List<Car> readData(String absPath){
+
+    public List<Car> readData(){
         Gson gson = new Gson();
         AddCarsToListJsonHelper jsonHelper;
         List<Car> data = null;
         BufferedReader reader;
         try {
-            reader = new BufferedReader(new FileReader(absPath));
+            reader = new BufferedReader(new FileReader(ABS_PATH));
             jsonHelper = gson.fromJson(reader,AddCarsToListJsonHelper.class);
             data = jsonHelper.getCars();
         } catch (FileNotFoundException e) {

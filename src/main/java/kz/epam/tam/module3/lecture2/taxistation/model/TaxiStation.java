@@ -1,7 +1,5 @@
 package kz.epam.tam.module3.lecture2.taxistation.model;
 
-import java.util.List;
-
 public class TaxiStation {
 
     protected long vehiclePrice;
