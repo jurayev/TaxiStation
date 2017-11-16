@@ -11,9 +11,12 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 public class XMLReader implements IReader{
-    private  static final String PATH_TO_CAR_XML = "src\\main\\resources\\cars.xml";
+
+    private static final ResourceBundle configBundle = ResourceBundle.getBundle("filepath");
+
     public List<Car> readData() {
         List<Car> data = new ArrayList<>();
         SAXParserFactory parserFactory = SAXParserFactory.newInstance();
@@ -21,14 +24,10 @@ public class XMLReader implements IReader{
         try {
             SAXParser parser = parserFactory.newSAXParser();
             handler = new VehicleSAXParser();
-            parser.parse(new File(PATH_TO_CAR_XML), handler);
+            parser.parse(new File(configBundle.getString("xml")), handler);
             data = handler.getResultCar();
-        }catch (SAXException e1) {
-            System.out.println("Parsing failed: " + e1.getMessage());
-        }catch (IOException e2) {
-            System.out.println("Parsing failed: " + e2.getMessage());
-        }catch (ParserConfigurationException e3) {
-            System.out.println("Parsing failed: " + e3.getMessage());
+        }catch (SAXException | IOException |ParserConfigurationException e) {
+            e.printStackTrace();
         }
         return data;
     }

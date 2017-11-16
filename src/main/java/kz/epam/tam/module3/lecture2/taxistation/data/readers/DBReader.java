@@ -41,23 +41,23 @@ public class DBReader implements IReader{
                 if (rs != null) {
                     rs.close();
                 }
-            } catch (SQLException var17) {
-                ;
+            } catch (SQLException e1) {
+                e1.printStackTrace();
             }
 
             try {
                 if (statement != null) {
                     statement.close();
                 }
-            } catch (SQLException var16) {
-                ;
+            } catch (SQLException e2) {
+                e2.printStackTrace();
             }
             try {
                 if (con != null) {
                     con.close();
                 }
-            } catch (SQLException var18) {
-                ;
+            } catch (SQLException e3) {
+                e3.printStackTrace();
             }
 
         }

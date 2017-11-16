@@ -1,13 +1,5 @@
 All results are recorded
-Budget is 25000;
+Budget is 0;
 Sort By fuel consumption:
-[
-Model: audi, Price: 4000, Fuel consumption: 9, Body type: vagon, 
-Model: bmw, Price: 4000, Fuel consumption: 9, Body type: hatchback, 
-Model: benz, Price: 4000, Fuel consumption: 10, Body type: sedan, 
-Model: honda, Price: 4000, Fuel consumption: 11, Body type: vagon, 
-Model: WV, Price: 5000, Fuel consumption: 12, Body type: hatchback, 
-Model: kia, Price: 4000, Fuel consumption: 15, Body type: sedan];
-Search result:
-Model: honda, Price: 4000, Fuel consumption: 11, Body type: vagon
-Model: audi, Price: 4000, Fuel consumption: 9, Body type: vagon
+[];
+Search result is empty

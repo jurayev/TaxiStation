@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface IReader {
 
-    public List<Car> readData();
+    List<Car> readData();
 }

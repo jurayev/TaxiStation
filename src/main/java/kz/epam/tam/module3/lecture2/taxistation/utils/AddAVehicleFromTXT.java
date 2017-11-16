@@ -8,16 +8,14 @@ import kz.epam.tam.module3.lecture2.taxistation.exception.InvalidListSizeExcepti
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class AddAVehicleFromTXT {
-    private  static final String PATH_TO_CAR_TXT = "src\\main\\resources\\car.txt";
 
 
 
     public List<Car> fillBaseCharacteristicsCar() throws InvalidListSizeException, InvalidDataException  {
         List<Car> carList = new ArrayList<>();
         TXTFileReader data = new TXTFileReader();
-        String[][] info = data.readData(PATH_TO_CAR_TXT);
+        String[][] info = data.readData();
         for(int i = 0; i < info.length; i++) {
             if (info[i].length != 4) {
                 throw new InvalidListSizeException("A car must contain 4 obligatory fields.",info[i].length);

@@ -7,11 +7,13 @@ import kz.epam.tam.module3.lecture2.taxistation.model.Car;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.List;
+import java.util.ResourceBundle;
 
 public class JSONReader implements IReader {
 
-    private static String ABS_PATH = "src\\main\\resources\\cars.json";
+    private static final ResourceBundle configBundle = ResourceBundle.getBundle("filepath");
 
     public List<Car> readData(){
         Gson gson = new Gson();
@@ -19,10 +21,10 @@ public class JSONReader implements IReader {
         List<Car> data = null;
         BufferedReader reader;
         try {
-            reader = new BufferedReader(new FileReader(ABS_PATH));
+            reader = new BufferedReader(new FileReader(configBundle.getString("json")));
             jsonHelper = gson.fromJson(reader,AddCarsToListJsonHelper.class);
             data = jsonHelper.getCars();
-        } catch (FileNotFoundException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return data;

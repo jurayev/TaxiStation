@@ -25,7 +25,6 @@ public class Runner {
         List<String> sortedByConsumptionList = new ArrayList<>();
         long countCar = 0;
         String search = "Search result is empty";
-        Scanner scanner = new Scanner (System.in);
 
         while(repeat){
             try{
@@ -35,7 +34,7 @@ public class Runner {
                 System.out.println("4 - find a vehicle");
                 System.out.println("0 - Exit");
 
-                int choice = scanner.nextInt();
+                int choice = new Scanner(System.in).nextInt();
 
                 switch (choice){
                     case 0:
@@ -50,11 +49,25 @@ public class Runner {
                         System.out.println("2 - XML");
                         System.out.println("3 - JSON");
                         System.out.println("4 - DB");
-                        int reader = scanner.nextInt();
+
+                        int reader = new Scanner(System.in).nextInt();;
+
                         if(reader == 1){
-                            AddAVehicleFromTXT vehicle = new AddAVehicleFromTXT();
-                            carList = vehicle.fillBaseCharacteristicsCar();
-                            vehicleList.addAll(carList);
+                            try{
+                                AddAVehicleFromTXT vehicle = new AddAVehicleFromTXT();
+                                carList = vehicle.fillBaseCharacteristicsCar();
+                                vehicleList.addAll(carList);
+                            }catch (InvalidListSizeException e){
+                                System.out.println(e.getMessage() + " Actual number of fields is " + e.getExceptionCause() +
+                                        ". Please check an input data and try again!");
+                            }catch (InvalidDataException ide){
+                                System.out.println(ide.getMessage() + "Found: price is " + ide.getExceptionPrice() +
+                                        ", consumption is " + ide.getExceptionConsumption());
+                            }catch (NullPointerException npe){
+                                System.out.println("Oops, number of vehicle you try to add is more than resource file contains. Please try again!");
+                            }catch (NegativeArraySizeException e){
+                                System.out.println("Oops, negative number is prohibited. Please try again!");
+                            }
                         }else if(reader == 2){
                             XMLReader xml = new XMLReader();
                             carList = xml.readData();
@@ -89,11 +102,15 @@ public class Runner {
                         System.out.println("Completed!");
                         break;
                     case 4:
-                        System.out.println("Type a car parameter to search.");
-                        scanner.nextLine();
-                        String param = scanner.nextLine();
-                        search = FindByParameter.findACarByParameter(param,carList);
-                        System.out.println("Completed!");
+                        try{
+                            System.out.println("Type a car parameter to search.");
+
+                            String param = new Scanner(System.in).nextLine();
+                            search = FindByParameter.findACarByParameter(param,carList);
+                            System.out.println("Completed!");
+                        }catch (EmptySearchResultException e){
+                            System.out.println(e.getMessage());
+                        }
                         break;
                     default:
                         System.out.println("Incorrect choice. Please try again!");
@@ -101,16 +118,6 @@ public class Runner {
                 }
             }catch (InputMismatchException e){
                 System.out.println("Oops, invalid data. Data must be only numeric. Please try again!");
-            }catch (NullPointerException npe){
-                System.out.println("Oops, number of vehicle you try to add is more than resource file contains. Please try again!");
-            }catch (NegativeArraySizeException e){
-                System.out.println("Oops, negative number is prohibited. Please try again!");
-            }catch (InvalidListSizeException e){
-                System.out.println(e.getMessage() + " Actual number of fields is " + e.getExceptionCause() + ". Please check an input data and try again!");
-            }catch (EmptySearchResultException e){
-                System.out.println(e.getMessage());
-            }catch (InvalidDataException ide){
-                System.out.println(ide.getMessage() + "Found: price is " + ide.getExceptionPrice() + ", consumption is " + ide.getExceptionConsumption());
             }
         }
     }
