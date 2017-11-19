@@ -13,7 +13,7 @@
 *.rar
 target/*
 /test-output/*
-/src/main/resources/result.txt
+/src/main/resources/results.txt
 
 # IDEA
 .idea/*
