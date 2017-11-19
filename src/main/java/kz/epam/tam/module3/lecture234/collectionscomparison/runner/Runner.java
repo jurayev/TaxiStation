@@ -1,8 +1,8 @@
 package kz.epam.tam.module3.lecture234.collectionscomparison.runner;
 
-import kz.epam.tam.module3.lecture234.collectionscomparison.ListMethods;
-import kz.epam.tam.module3.lecture234.collectionscomparison.MapMethods;
-import kz.epam.tam.module3.lecture234.collectionscomparison.SetMethods;
+import kz.epam.tam.module3.lecture234.collectionscomparison.core.ListMethods;
+import kz.epam.tam.module3.lecture234.collectionscomparison.core.MapMethods;
+import kz.epam.tam.module3.lecture234.collectionscomparison.core.SetMethods;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package kz.epam.tam.module3.lecture234.collectionscomparison;
+package kz.epam.tam.module3.lecture234.collectionscomparison.core;
 
 import java.util.HashMap;
 import java.util.TreeMap;
