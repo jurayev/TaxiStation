@@ -3,6 +3,7 @@
 
 # Log file
 *.log
+/my_db/*
 
 # Package Files #
 *.war
@@ -20,4 +21,6 @@ TaxiStation.iml
 /target/
 /bin/
 
+# DB output
+/my_db/*
 
