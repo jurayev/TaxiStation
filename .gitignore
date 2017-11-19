@@ -22,5 +22,5 @@ TaxiStation.iml
 /bin/
 
 # DB output
-/my_db/*
+/my_db/
 
