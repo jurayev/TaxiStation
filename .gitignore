@@ -4,12 +4,6 @@
 # Log file
 *.log
 
-# BlueJ files
-*.ctxt
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
 # Package Files #
 *.war
 *.ear
@@ -19,12 +13,14 @@
 target/*
 /test-output/*
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-
 # IDEA
 .idea/*
-CancerAutomationTF.iml
+.idea/workspace.xml
+TaxiStation.iml
 /target/
 /bin/
+.idea/workspace.xml
+
+license
+.idea/workspace.xml
 .idea/workspace.xml
