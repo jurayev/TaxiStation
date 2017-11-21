@@ -1,10 +1,11 @@
 package kz.epam.tam.module3.lecture234.taxistation.runner;
 
 import kz.epam.tam.module3.lecture234.taxistation.data.readers.DBReader;
+import kz.epam.tam.module3.lecture234.taxistation.data.readers.IReader;
 import kz.epam.tam.module3.lecture234.taxistation.data.readers.JSONReader;
 import kz.epam.tam.module3.lecture234.taxistation.data.readers.XMLReader;
 import kz.epam.tam.module3.lecture234.taxistation.model.Car;
-import kz.epam.tam.module3.lecture234.taxistation.model.TaxiStation;
+import kz.epam.tam.module3.lecture234.taxistation.model.Vehicle;
 import kz.epam.tam.module3.lecture234.taxistation.data.writers.TxtFileWriter;
 import kz.epam.tam.module3.lecture234.taxistation.exceptions.EmptySearchResultException;
 import kz.epam.tam.module3.lecture234.taxistation.exceptions.InvalidDataException;
@@ -13,6 +14,8 @@ import kz.epam.tam.module3.lecture234.taxistation.utils.AddAVehicleFromTXT;
 import kz.epam.tam.module3.lecture234.taxistation.utils.FindByParameter;
 import kz.epam.tam.module3.lecture234.taxistation.utils.FuelConsumptionComparator;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.*;
 
 public class Runner {
@@ -21,7 +24,7 @@ public class Runner {
         boolean repeat = true;
 
         List<Car> carList = new ArrayList<>();
-        List<TaxiStation> vehicleList = new ArrayList<>();
+        List<Vehicle> vehicleList = new ArrayList<>();
         List<String> sortedByConsumptionList = new ArrayList<>();
         long countCar = 0;
         String search = "Search result is empty";
@@ -87,7 +90,7 @@ public class Runner {
                         break;
                     case 2:
                         System.out.println("Count taxi station budget");
-                        for (TaxiStation taxiPrice : vehicleList){
+                        for (Vehicle taxiPrice : vehicleList){
                             countCar +=  taxiPrice.getVehiclePrice();
                         }
                         System.out.println("Budget is " + countCar);

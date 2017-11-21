@@ -17,21 +17,21 @@ public class AddAVehicleFromTXT {
         TXTFileReader data = new TXTFileReader();
         String[][] info = data.readData();
         for(int i = 0; i < info.length; i++) {
-            if (info[i].length != 4) {
+            if (info[i].length != 5) {
                 throw new InvalidListSizeException("A car must contain 4 obligatory fields.",info[i].length);
             }
             try {
                 if(Long.parseLong(info[i][1]) <= 0 || Integer.parseInt(info[i][2]) <= 0){
                     throw new InvalidDataException("Validation has detected invalid input data. Price and consumption must be positive and not equals to zero. ",
                             info[i][1],info[i][2]);}
-                carList.add(new Car(info[i][0], Long.parseLong(info[i][1]), Integer.parseInt(info[i][2]), info[i][3]));
+                carList.add(new Car(info[i][0], Long.parseLong(info[i][1]), Integer.parseInt(info[i][2]), info[i][3], info[i][4]));
             } catch (NumberFormatException e) {
                 if(Long.parseLong(info[i][1].replaceAll("[^0-9]", "")) <= 0 ||
                         Integer.parseInt(info[i][2].replaceAll("[^0-9]", "")) <= 0){
                     throw new InvalidDataException("Validation has detected invalid input data. Price and consumption must be positive and not equals to zero. ",
                             info[i][1],info[i][2]);}
                 carList.add(new Car(info[i][0], Long.parseLong(info[i][1].replaceAll("[^0-9]", "")),
-                        Integer.parseInt(info[i][2].replaceAll("[^0-9]", "")), info[i][3]));
+                        Integer.parseInt(info[i][2].replaceAll("[^0-9]", "")), info[i][3], info[i][4]));
             }
         }
         return carList;

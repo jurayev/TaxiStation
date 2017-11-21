@@ -21,7 +21,7 @@ public class FindByParameter {
             else if(value.equals(vehiclePrice.toString())){
                 carOutPut += "\n" + car.getInfo();
             }
-            else if(value.equals(car.getBodytype())){
+            else if(value.equals(car.getBodyType())){
                 carOutPut += "\n" + car.getInfo();
             }
         }

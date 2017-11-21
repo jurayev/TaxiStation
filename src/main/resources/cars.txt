@@ -1,6 +1,6 @@
-txt,2000,17,avante
-benz,40=00++,2sdfsdf0   !@$#$^#$^,hatchback
-benz,4000,10,vagon
-benz,4000,18,sedan
-benz,4000,19,hatchback
-benz,40=0 0++,2sdfsdf0   !@$#$^#$^,hatchback
+txt,2000,17,avante,taxi
+benz,40=00++,2sdfsdf0   !@$#$^#$^,hatchback,taxi
+benz,4000,10,vagon,taxi
+benz,4000,18,sedan,service car
+benz,4000,19,hatchback,service car
+benz,40=0 0++,2sdfsdf0   !@$#$^#$^,hatchback,service car

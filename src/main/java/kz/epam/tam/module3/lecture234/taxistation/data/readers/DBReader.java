@@ -31,7 +31,7 @@ public class DBReader implements IReader{
             rs = statement.executeQuery(SQL_SELECT);
             while (rs.next()){
                 data.add(new Car(rs.getString("model"),rs.getInt("price"),
-                        rs.getInt("consumption"),rs.getString("body")));
+                        rs.getInt("consumption"),rs.getString("body"), rs.getString("body")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
