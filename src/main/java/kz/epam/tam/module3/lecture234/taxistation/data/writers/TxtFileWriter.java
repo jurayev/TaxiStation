@@ -9,12 +9,12 @@ import java.util.ResourceBundle;
 public class TxtFileWriter {
     private static final ResourceBundle configBundle = ResourceBundle.getBundle("filepath");
 
-    public void writeToFile(long countCar, List<String> sortedByConsumptionList, String search) {
+    public void writeToFile(long countCar,List<String> carListToWrite, List<String> sortedByConsumptionList, String search) {
         BufferedWriter writer = null;
         try {
             writer = new BufferedWriter(new FileWriter(configBundle.getString("resultstxt")));
-            writer.write("All results are recorded" + "\nBudget is " + countCar + ";\nSort By fuel consumption:\n" + sortedByConsumptionList
-                    + ";\n" + search);
+            writer.write("All operations are recorded.\n\n" + "Add cars to taxi station:\n" + carListToWrite + ";\n\nBudget is " + countCar + ";\n\nSort By fuel consumption:\n" + sortedByConsumptionList
+                    + ";\n\n" + search +";");
             writer.newLine();
             writer.flush();
         }catch (IOException e){
