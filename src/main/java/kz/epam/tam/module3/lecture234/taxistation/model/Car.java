@@ -2,14 +2,14 @@ package kz.epam.tam.module3.lecture234.taxistation.model;
 
 public class Car extends Vehicle {
     private String bodyType;
-    private  String usage;
+    private  String taxiClass;
 
     public Car(){super();}
 
-    public Car(String model, long vehiclePrice,int fuelConsumption,String bodyType,String usage){
+    public Car(String model, long vehiclePrice,int fuelConsumption,String bodyType,String taxiClass){
         super(model, vehiclePrice, fuelConsumption);
         this.bodyType = bodyType;
-        this.usage = usage;
+        this.taxiClass = taxiClass;
     }
 
     public String getBodyType(){
@@ -18,14 +18,14 @@ public class Car extends Vehicle {
     public void setBodyType(String bodyType){
         this.bodyType = bodyType;
     }
-    public String getUsage() {
-        return usage;
+    public String getTaxiClass() {
+        return taxiClass;
     }
 
-    public void setUsage(String usage) {
-        this.usage = usage;
+    public void setTaxiClass(String taxiClass) {
+        this.taxiClass = taxiClass;
     }
     public String getInfo(){
-        return super.getInfo() + ", Body type: " + this.bodyType + ", Usage: " + this.usage;
+        return super.getInfo() + ", Body type: " + this.bodyType + ", Class: " + this.taxiClass;
     }
 }
