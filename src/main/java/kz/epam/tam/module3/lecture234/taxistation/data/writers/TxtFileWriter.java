@@ -7,14 +7,18 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class TxtFileWriter {
-    private static final ResourceBundle configBundle = ResourceBundle.getBundle("filepath");
 
-    public void writeToFile(long countCar,List<String> carListToWrite, List<String> sortedByConsumptionList, String search) {
+    public void writeToFile(long countCar,List<String> addedCarsList, List<String> sortedList, String search,String errors) {
         BufferedWriter writer = null;
         try {
-            writer = new BufferedWriter(new FileWriter(configBundle.getString("resultstxt")));
-            writer.write("All operations are recorded.\n\n" + "Add cars to taxi station:\n" + carListToWrite + ";\n\nBudget is " + countCar + ";\n\nSort By fuel consumption:\n" + sortedByConsumptionList
-                    + ";\n\n" + search +";");
+            writer = new BufferedWriter(new FileWriter(ResourceBundle.getBundle("filepath").getString("resultstxt")));
+            String data = "All operations are recorded.\n\n" + "Add cars to taxi station:\n" + addedCarsList + ";\n\nBudget is " + countCar + ";\n\nSort By fuel consumption:\n" + sortedList
+                    + ";\n\n" + search +";\n\n";
+            if(errors == null){
+            writer.write(data);
+            }else {
+                writer.write(data + "Found Errors:\n" + errors);
+            }
             writer.newLine();
             writer.flush();
         }catch (IOException e){

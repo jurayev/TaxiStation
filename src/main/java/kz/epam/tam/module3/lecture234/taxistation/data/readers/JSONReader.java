@@ -12,15 +12,13 @@ import java.util.ResourceBundle;
 
 public class JSONReader implements IReader {
 
-    private static final ResourceBundle configBundle = ResourceBundle.getBundle("filepath");
-
     public List<Car> readData(){
         Gson gson = new Gson();
         AddCarsToListJsonHelper jsonHelper;
         List<Car> data = null;
         BufferedReader reader;
         try {
-            reader = new BufferedReader(new FileReader(configBundle.getString("json")));
+            reader = new BufferedReader(new FileReader(ResourceBundle.getBundle("filepath").getString("json")));
             jsonHelper = gson.fromJson(reader,AddCarsToListJsonHelper.class);
             data = jsonHelper.getCars();
         } catch (IOException e) {

@@ -13,14 +13,13 @@ import java.util.ResourceBundle;
 import java.util.Scanner;
 
 public class TXTFileReader implements IReader{
-    private static final ResourceBundle configBundle = ResourceBundle.getBundle("filepath");
 
     public List<Car> readData() throws InvalidListSizeException,InvalidDataException{
         BufferedReader reader = null;
         String line;
         List<Car> carList = new ArrayList<>();
         try{
-            reader = new BufferedReader(new FileReader(configBundle.getString("txt")));
+            reader = new BufferedReader(new FileReader(ResourceBundle.getBundle("filepath").getString("txt")));
             while((line = reader.readLine()) != null){
                 String[] data = line.split(",");
                 if (data.length != 5) {

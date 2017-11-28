@@ -15,8 +15,6 @@ import java.util.ResourceBundle;
 
 public class XMLReader implements IReader{
 
-    private static final ResourceBundle configBundle = ResourceBundle.getBundle("filepath");
-
     public List<Car> readData() {
         List<Car> data = new ArrayList<>();
         SAXParserFactory parserFactory = SAXParserFactory.newInstance();
@@ -24,7 +22,7 @@ public class XMLReader implements IReader{
         try {
             SAXParser parser = parserFactory.newSAXParser();
             handler = new VehicleSAXParser();
-            parser.parse(new File(configBundle.getString("xml")), handler);
+            parser.parse(new File(ResourceBundle.getBundle("filepath").getString("xml")), handler);
             data = handler.getResultCar();
         }catch (SAXException | IOException |ParserConfigurationException e) {
             e.printStackTrace();

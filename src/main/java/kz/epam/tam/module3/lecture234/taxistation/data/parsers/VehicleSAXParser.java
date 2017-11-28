@@ -32,16 +32,21 @@ public class VehicleSAXParser extends DefaultHandler {
             this.cars.add(this.car);
         } else {
             String elementVal = this.thisElement.toString();
-            if (qName.equals("model")) {
-                this.car.setModel(elementVal);
-            } else if (qName.equals("price")) {
-                this.car.setVehiclePrice(Long.parseLong(elementVal));
-            } else if (qName.equals("consumption")) {
-                this.car.setFuelConsumption(Integer.parseInt(elementVal));
-            } else if (qName.equals("btype")) {
-                this.car.setBodyType(elementVal);
-            } else if (qName.equals("class")) {
-                this.car.setTaxiClass(elementVal);
+            switch (qName){
+                case "model":
+                    this.car.setModel(elementVal);
+                    break;
+                case "price":
+                    this.car.setVehiclePrice(Long.parseLong(elementVal));
+                    break;
+                case "consumption":
+                    this.car.setFuelConsumption(Integer.parseInt(elementVal));
+                    break;
+                case "btype":
+                    this.car.setBodyType(elementVal);
+                    break;
+                case "class":
+                    this.car.setTaxiClass(elementVal);
             }
         }
         this.thisElement = new StringBuilder();
