@@ -10,15 +10,13 @@ public class FindByParameter {
     public static String findACarByParameter(String value, List<Car> list)throws EmptySearchResultException{
         String carOutPut = "Search result:";
         for( Car car : list){
-            Integer fuelConsumption = car.getFuelConsumption();
-            Long vehiclePrice = car.getVehiclePrice();
             if(value.equals(car.getModel())){
                 carOutPut += "\n" + car.getInfo();
             }
-            else if(value.equals(fuelConsumption.toString())){
+            else if(Integer.parseInt(value) == car.getFuelConsumption()){
                 carOutPut += "\n" + car.getInfo();
             }
-            else if(value.equals(vehiclePrice.toString())){
+            else if(Long.parseLong(value) == car.getVehiclePrice()){
                 carOutPut += "\n" + car.getInfo();
             }
             else if(value.equals(car.getBodyType())){
