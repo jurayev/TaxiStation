@@ -40,8 +40,8 @@ public class VehicleSAXParser extends DefaultHandler {
                 this.car.setFuelConsumption(Integer.parseInt(elementVal));
             } else if (qName.equals("btype")) {
                 this.car.setBodyType(elementVal);
-            } else if (qName.equals("usage")) {
-                this.car.setUsage(elementVal);
+            } else if (qName.equals("class")) {
+                this.car.setTaxiClass(elementVal);
             }
         }
         this.thisElement = new StringBuilder();
