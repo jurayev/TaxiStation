@@ -13,21 +13,22 @@ public class DerbyDB {
 
         try {
             DriverManager.registerDriver(new EmbeddedDriver());
-            con = DriverManager.getConnection("jdbc:derby:my_db;user=yuriy;password=jurayev");
+            con = DriverManager.getConnection("jdbc:derby:my_db;create=true;user=yuriy;password=jurayev");
             statement = con.createStatement();
-            /*statement.executeUpdate("CREATE TABLE Cars(" +
+            statement.executeUpdate("CREATE TABLE Cars(" +
                     "MODEL varchar(255)," +
                     "PRICE int," +
                     "CONSUMPTION int," +
-                    "BODY varchar(255))");*/
-            /*statement.addBatch("INSERT INTO cars(MODEL,PRICE,CONSUMPTION,BODY)VALUES('kia',4000,15,'sedan')");
-            statement.addBatch("INSERT INTO cars(MODEL,PRICE,CONSUMPTION,BODY)VALUES('benz',4000,10,'sedan')");
-            statement.addBatch("INSERT INTO cars(MODEL,PRICE,CONSUMPTION,BODY)VALUES('honda',4000,11,'vagon')");
-            statement.addBatch("INSERT INTO cars(MODEL,PRICE,CONSUMPTION,BODY)VALUES('audi',4000,9,'vagon')");
-            statement.addBatch("INSERT INTO cars(MODEL,PRICE,CONSUMPTION,BODY)VALUES('WV',5000,12,'hatchback')");
-            statement.addBatch("INSERT INTO cars(MODEL,PRICE,CONSUMPTION,BODY)VALUES('bmw',4000,9,'hatchback')");
+                    "BODY varchar(255)," +
+                    "CLASS varchar(255))");
+            statement.addBatch("INSERT INTO cars(MODEL,PRICE,CONSUMPTION,BODY,CLASS)VALUES('kia',4000,15,'sedan','comfort')");
+            statement.addBatch("INSERT INTO cars(MODEL,PRICE,CONSUMPTION,BODY,CLASS)VALUES('benz',4000,10,'sedan','business')");
+            statement.addBatch("INSERT INTO cars(MODEL,PRICE,CONSUMPTION,BODY,CLASS)VALUES('honda',4000,11,'hatchback','econom')");
+            statement.addBatch("INSERT INTO cars(MODEL,PRICE,CONSUMPTION,BODY,CLASS)VALUES('audi',4000,9,'vagon','comfort+')");
+            statement.addBatch("INSERT INTO cars(MODEL,PRICE,CONSUMPTION,BODY,CLASS)VALUES('WV',5000,12,'vagon','comfort+')");
+            statement.addBatch("INSERT INTO cars(MODEL,PRICE,CONSUMPTION,BODY,CLASS)VALUES('bmw',4000,9,'sedan','business')");
             int[] count = statement.executeBatch();
-            con.commit();*/
+            con.commit();
             rs = statement.executeQuery("SELECT * FROM CARS");
             int columnCount = rs.getMetaData().getColumnCount();
             while (rs.next()){
