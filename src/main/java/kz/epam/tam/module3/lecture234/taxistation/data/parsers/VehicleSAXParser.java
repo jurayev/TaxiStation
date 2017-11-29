@@ -36,11 +36,23 @@ public class VehicleSAXParser extends DefaultHandler {
                 case "model":
                     this.car.setModel(elementVal);
                     break;
+
                 case "price":
-                    this.car.setVehiclePrice(Long.parseLong(elementVal));
+                    long price;
+                    try {
+                        price = Long.parseLong(elementVal);
+                    }catch (NumberFormatException e){
+                        price = Long.parseLong(elementVal.replaceAll("[^0-9]", ""));
+                    }this.car.setVehiclePrice(price);
                     break;
                 case "consumption":
-                    this.car.setFuelConsumption(Integer.parseInt(elementVal));
+                    int cons;
+                    try{
+                        cons = Integer.parseInt(elementVal);
+                    }catch (NumberFormatException e){
+                        cons = Integer.parseInt(elementVal.replaceAll("[^0-9]", ""));
+                    }
+                    this.car.setFuelConsumption(cons);
                     break;
                 case "btype":
                     this.car.setBodyType(elementVal);

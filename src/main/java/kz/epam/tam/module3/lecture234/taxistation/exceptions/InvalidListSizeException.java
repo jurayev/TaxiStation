@@ -2,7 +2,7 @@ package kz.epam.tam.module3.lecture234.taxistation.exceptions;
 
 public class InvalidListSizeException extends Exception {
 
-    private Integer cause = 0;
+    private Integer cause;
 
     public InvalidListSizeException(String message){
         super(message);

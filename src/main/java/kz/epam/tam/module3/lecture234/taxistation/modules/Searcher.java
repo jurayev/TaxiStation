@@ -12,7 +12,7 @@ public class Searcher {
     public static String searchACar(List<Car> carsList){
         String search;
         try {
-            String param = ResourceBundle.getBundle("other").getString("search");
+            String param = ResourceBundle.getBundle("workflowvariables").getString("search");
             search = FindByParameter.findACarByParameter(param, carsList);
         } catch (EmptySearchResultException e) {
             search = e.getMessage();

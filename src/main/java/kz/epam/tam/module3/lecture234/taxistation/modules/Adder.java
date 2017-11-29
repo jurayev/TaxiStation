@@ -12,7 +12,7 @@ import java.util.ResourceBundle;
 public class Adder {
 
     public static List<Car> addCars() throws DataReaderNotFoundException,InvalidListSizeException,InvalidDataException{
-        String picker = ResourceBundle.getBundle("other").getString("reader");
+        String picker = ResourceBundle.getBundle("workflowvariables").getString("reader");
         List<Car> carList;
         IReader reader;
         switch (picker) {
