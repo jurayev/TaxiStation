@@ -22,9 +22,9 @@ public class TaxiStationCreator {
         List<CargoTaxi> cTaxiList = new ArrayList<>();
         List<Vehicle> vehicleList = new ArrayList<>();
         String errors = null;
-       
+
         try {
-            pTaxiList = Adder.addPassengerTaxi();
+            pTaxiList = Adder.addVehicle();
             cTaxiList = Adder.addCargoTaxi();
             vehicleList.addAll(pTaxiList);
 

@@ -5,6 +5,7 @@ public class CargoTaxi extends Vehicle {
     private int capacity;
     private String shipping;
 
+    public CargoTaxi(){super();}
     public CargoTaxi(String model, long vehiclePrice, int fuelConsumption, int capacity, String shipping){
         super(model, vehiclePrice, fuelConsumption);
         this.capacity = capacity;

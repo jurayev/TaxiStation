@@ -1,7 +1,8 @@
 package kz.epam.tam.module3.lecture234.taxistation.data.readers;
 
-import kz.epam.tam.module3.lecture234.taxistation.data.parsers.VehicleSAXParser;
+import kz.epam.tam.module3.lecture234.taxistation.data.parsers.PassengerTaxiSAXParser;
 import kz.epam.tam.module3.lecture234.taxistation.model.PassengerTaxi;
+import kz.epam.tam.module3.lecture234.taxistation.model.Vehicle;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -15,19 +16,24 @@ import java.util.ResourceBundle;
 
 public class XMLReader implements IReader{
 
-    public List<PassengerTaxi> readData() {
-        List<PassengerTaxi> data = new ArrayList<>();
+    public List<Vehicle> readData(String file) {
+        List<Vehicle> data = new ArrayList<>();
         SAXParserFactory parserFactory = SAXParserFactory.newInstance();
-        VehicleSAXParser handler;
+        PassengerTaxiSAXParser handler;
         try {
             SAXParser parser = parserFactory.newSAXParser();
-            handler = new VehicleSAXParser();
-            parser.parse(new File(ResourceBundle.getBundle("filepath").getString("xml")), handler);
-            data = handler.getResultCar();
+
+            switch (file){
+                case "passengerTaxiXML":
+                    handler = new PassengerTaxiSAXParser();
+                    parser.parse(new File(ResourceBundle.getBundle("filepath").getString(file)), handler);
+                    List<PassengerTaxi> pTaxi = handler.getResult();
+                    break;
+            }
+
         }catch (SAXException | IOException |ParserConfigurationException e) {
             e.printStackTrace();
         }
         return data;
     }
-
 }

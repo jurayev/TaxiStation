@@ -8,13 +8,13 @@ import org.xml.sax.helpers.DefaultHandler;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VehicleSAXParser extends DefaultHandler {
+public class PassengerTaxiSAXParser extends DefaultHandler {
 
     private PassengerTaxi passengerTaxi;
     private List<PassengerTaxi> passengerTaxis = new ArrayList<>();
     private StringBuilder thisElement;
 
-    public VehicleSAXParser() {
+    public PassengerTaxiSAXParser() {
     }
 
     public void startDocument() throws SAXException {
@@ -71,9 +71,10 @@ public class VehicleSAXParser extends DefaultHandler {
         this.thisElement.append(ch, start, length);
     }
 
-    public List<PassengerTaxi> getResultCar(){
+    public List<PassengerTaxi> getResult(){
         return this.passengerTaxis;
     }
+
 }
 
 
