@@ -4,7 +4,9 @@ import kz.epam.tam.module3.lecture234.taxistation.data.writers.TxtFileWriter;
 import kz.epam.tam.module3.lecture234.taxistation.exceptions.DataReaderNotFoundException;
 import kz.epam.tam.module3.lecture234.taxistation.exceptions.InvalidDataException;
 import kz.epam.tam.module3.lecture234.taxistation.exceptions.InvalidListSizeException;
-import kz.epam.tam.module3.lecture234.taxistation.model.Car;
+import kz.epam.tam.module3.lecture234.taxistation.model.CargoTaxi;
+import kz.epam.tam.module3.lecture234.taxistation.model.PassengerTaxi;
+import kz.epam.tam.module3.lecture234.taxistation.model.Vehicle;
 import kz.epam.tam.module3.lecture234.taxistation.modules.*;
 
 import java.util.ArrayList;
@@ -16,10 +18,16 @@ public class TaxiStationCreator {
 
         System.out.println("Start");
         ///add
-        List<Car> carsList = new ArrayList<>();
+        List<PassengerTaxi> pTaxiList = new ArrayList<>();
+        List<CargoTaxi> cTaxiList = new ArrayList<>();
+        List<Vehicle> vehicleList = new ArrayList<>();
         String errors = null;
+       
         try {
-            carsList.addAll(Adder.addCars());
+            pTaxiList = Adder.addPassengerTaxi();
+            cTaxiList = Adder.addCargoTaxi();
+            vehicleList.addAll(pTaxiList);
+
         }catch (DataReaderNotFoundException e){
             errors = e.getMessage();
             System.out.println(e.getMessage());
@@ -36,14 +44,14 @@ public class TaxiStationCreator {
         }
         //// add to list for saving
         List<String> addedCarsList = new ArrayList<>();
-        Converter.convertObjectsToString(carsList,addedCarsList);
+        Converter.convertObjectsToString(pTaxiList,addedCarsList);
 /// count price
-        long countCar = Counter.countCarsPrice(carsList);
+        long countCar = Counter.countCarsPrice(pTaxiList);
 ///sort
         List<String> sortedList = new ArrayList<>();
-        Sorter.sortCars(carsList,sortedList);
+        Sorter.sortCars(pTaxiList,sortedList);
 ///search
-        String search = Searcher.searchACar(carsList);
+        String search = Searcher.searchACar(pTaxiList);
         ////write
         TxtFileWriter writer = new TxtFileWriter();
         writer.writeToFile(countCar, addedCarsList, sortedList, search, errors);

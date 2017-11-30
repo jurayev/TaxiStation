@@ -1,6 +1,6 @@
 package kz.epam.tam.module3.lecture234.taxistation.data.readers;
 
-import kz.epam.tam.module3.lecture234.taxistation.model.Car;
+import kz.epam.tam.module3.lecture234.taxistation.model.PassengerTaxi;
 import org.apache.derby.jdbc.EmbeddedDriver;
 
 import java.sql.*;
@@ -17,9 +17,9 @@ public class DBReader implements IReader{
     private String password = configBundle.getString("password");
 
 
-    public List<Car> readData(){
+    public List<PassengerTaxi> readData(){
 
-        List<Car> data = new ArrayList<>();
+        List<PassengerTaxi> data = new ArrayList<>();
         ResultSet rs = null;
         Connection con = null;
         Statement statement = null;
@@ -30,7 +30,7 @@ public class DBReader implements IReader{
             statement = con.createStatement();
             rs = statement.executeQuery(SQL_SELECT);
             while (rs.next()){
-                data.add(new Car(rs.getString("model"),rs.getInt("price"),
+                data.add(new PassengerTaxi(rs.getString("model"),rs.getInt("price"),
                         rs.getInt("consumption"),rs.getString("body"), rs.getString("body")));
             }
         } catch (SQLException e) {

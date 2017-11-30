@@ -1,12 +1,12 @@
 package kz.epam.tam.module3.lecture234.taxistation.model;
 
-public class Car extends Vehicle {
+public class PassengerTaxi extends Vehicle {
     private String bodyType;
     private  String taxiClass;
 
-    public Car(){super();}
+    public PassengerTaxi(){super();}
 
-    public Car(String model, long vehiclePrice,int fuelConsumption,String bodyType,String taxiClass){
+    public PassengerTaxi(String model, long vehiclePrice, int fuelConsumption, String bodyType, String taxiClass){
         super(model, vehiclePrice, fuelConsumption);
         this.bodyType = bodyType;
         this.taxiClass = taxiClass;

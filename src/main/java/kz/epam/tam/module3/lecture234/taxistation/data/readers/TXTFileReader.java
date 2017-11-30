@@ -2,7 +2,7 @@ package kz.epam.tam.module3.lecture234.taxistation.data.readers;
 
 import kz.epam.tam.module3.lecture234.taxistation.exceptions.InvalidDataException;
 import kz.epam.tam.module3.lecture234.taxistation.exceptions.InvalidListSizeException;
-import kz.epam.tam.module3.lecture234.taxistation.model.Car;
+import kz.epam.tam.module3.lecture234.taxistation.model.PassengerTaxi;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -14,10 +14,10 @@ import java.util.ResourceBundle;
 
 public class TXTFileReader implements IReader{
 
-    public List<Car> readData() throws InvalidListSizeException,InvalidDataException{
+    public List<PassengerTaxi> readData() throws InvalidListSizeException,InvalidDataException{
         BufferedReader reader = null;
         String line;
-        List<Car> carList = new ArrayList<>();
+        List<PassengerTaxi> passengerTaxiList = new ArrayList<>();
         try{
             reader = new BufferedReader(new FileReader(ResourceBundle.getBundle("filepath").getString("txt")));
             while((line = reader.readLine()) != null){
@@ -29,13 +29,13 @@ public class TXTFileReader implements IReader{
                     if(Long.parseLong(data[1]) <= 0 || Integer.parseInt(data[2]) <= 0){
                         throw new InvalidDataException("Validation has detected invalid input data. Price and consumption must be positive and not equals to zero. ",
                                 data[1],data[2]);}
-                    carList.add(new Car(data[0], Long.parseLong(data[1]), Integer.parseInt(data[2]), data[3], data[4]));
+                    passengerTaxiList.add(new PassengerTaxi(data[0], Long.parseLong(data[1]), Integer.parseInt(data[2]), data[3], data[4]));
                 } catch (NumberFormatException e) {
                     if(Long.parseLong(data[1].replaceAll("[^0-9]", "")) <= 0 ||
                             Integer.parseInt(data[2].replaceAll("[^0-9]", "")) <= 0){
                         throw new InvalidDataException("Validation has detected invalid input data. Price and consumption must be positive and not equals to zero. ",
                                 data[1],data[2]);}
-                    carList.add(new Car(data[0], Long.parseLong(data[1].replaceAll("[^0-9]", "")),
+                    passengerTaxiList.add(new PassengerTaxi(data[0], Long.parseLong(data[1].replaceAll("[^0-9]", "")),
                             Integer.parseInt(data[2].replaceAll("[^0-9]", "")), data[3], data[4]));
                 }
             }
@@ -51,6 +51,6 @@ public class TXTFileReader implements IReader{
                 e2.printStackTrace();
             }
         }
-        return carList;
+        return passengerTaxiList;
     }
 }

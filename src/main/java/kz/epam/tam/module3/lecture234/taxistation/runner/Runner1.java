@@ -8,7 +8,7 @@ import kz.epam.tam.module3.lecture234.taxistation.data.writers.TxtFileWriter;
 import kz.epam.tam.module3.lecture234.taxistation.exceptions.EmptySearchResultException;
 import kz.epam.tam.module3.lecture234.taxistation.exceptions.InvalidDataException;
 import kz.epam.tam.module3.lecture234.taxistation.exceptions.InvalidListSizeException;
-import kz.epam.tam.module3.lecture234.taxistation.model.Car;
+import kz.epam.tam.module3.lecture234.taxistation.model.PassengerTaxi;
 import kz.epam.tam.module3.lecture234.taxistation.model.Vehicle;
 import kz.epam.tam.module3.lecture234.taxistation.utils.AddAVehicleFromTXT;
 import kz.epam.tam.module3.lecture234.taxistation.utils.FindByParameter;
@@ -21,7 +21,7 @@ public class Runner1 {
     public static void main(String[] args){
         boolean repeat = true;
 
-        List<Car> carList = new ArrayList<>();
+        List<PassengerTaxi> carList = new ArrayList<>();
         List<Vehicle> vehicleList = new ArrayList<>();
         List<String> sortedByConsumptionList = new ArrayList<>();
         long countCar = 0;

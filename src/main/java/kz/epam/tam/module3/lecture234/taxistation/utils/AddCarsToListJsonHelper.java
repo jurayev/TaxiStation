@@ -1,14 +1,15 @@
 package kz.epam.tam.module3.lecture234.taxistation.utils;
 
-import kz.epam.tam.module3.lecture234.taxistation.model.Car;
+import kz.epam.tam.module3.lecture234.taxistation.model.PassengerTaxi;
+
 import java.util.List;
 
 public class AddCarsToListJsonHelper {
 
-    private List<Car> cars;
+    private List<PassengerTaxi> passengerTaxis;
 
-    public List<Car> getCars() {
-        return cars;
+    public List<PassengerTaxi> getPassengerTaxis() {
+        return passengerTaxis;
     }
 
 }

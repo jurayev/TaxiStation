@@ -1,7 +1,7 @@
 package kz.epam.tam.module3.lecture234.taxistation.modules;
 
 import kz.epam.tam.module3.lecture234.taxistation.exceptions.EmptySearchResultException;
-import kz.epam.tam.module3.lecture234.taxistation.model.Car;
+import kz.epam.tam.module3.lecture234.taxistation.model.PassengerTaxi;
 import kz.epam.tam.module3.lecture234.taxistation.utils.FindByParameter;
 
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.ResourceBundle;
 
 public class Searcher {
 
-    public static String searchACar(List<Car> carsList){
+    public static String searchACar(List<PassengerTaxi> carsList){
         String search;
         try {
             String param = ResourceBundle.getBundle("workflowvariables").getString("search");
