@@ -1,6 +1,8 @@
 package kz.epam.tam.module3.lecture234.taxistation.data.readers;
 
+import kz.epam.tam.module3.lecture234.taxistation.data.parsers.CargoTaxiSAXParser;
 import kz.epam.tam.module3.lecture234.taxistation.data.parsers.PassengerTaxiSAXParser;
+import kz.epam.tam.module3.lecture234.taxistation.model.CargoTaxi;
 import kz.epam.tam.module3.lecture234.taxistation.model.PassengerTaxi;
 import kz.epam.tam.module3.lecture234.taxistation.model.Vehicle;
 import org.xml.sax.SAXException;
@@ -18,17 +20,26 @@ public class XMLReader implements IReader{
 
     public List<Vehicle> readData(String file) {
         List<Vehicle> data = new ArrayList<>();
-        SAXParserFactory parserFactory = SAXParserFactory.newInstance();
-        PassengerTaxiSAXParser handler;
-        try {
-            SAXParser parser = parserFactory.newSAXParser();
 
+        try {
+            SAXParserFactory parserFactory = SAXParserFactory.newInstance();
+            SAXParser parser = parserFactory.newSAXParser();
+            String bundle = ResourceBundle.getBundle("filepath").getString(file);
             switch (file){
                 case "passengerTaxiXML":
-                    handler = new PassengerTaxiSAXParser();
-                    parser.parse(new File(ResourceBundle.getBundle("filepath").getString(file)), handler);
-                    List<PassengerTaxi> pTaxi = handler.getResult();
+                    PassengerTaxiSAXParser taxiHandler = new PassengerTaxiSAXParser();
+                    parser.parse(new File(bundle), taxiHandler);
+                    List<PassengerTaxi> pTaxi = taxiHandler.getResult();
+                    data.addAll(pTaxi);
                     break;
+                case "cargoTaxiXML":
+                    CargoTaxiSAXParser cargoHandler = new CargoTaxiSAXParser();
+                    parser.parse(new File(bundle), cargoHandler);
+                    List<CargoTaxi> cTaxi = cargoHandler.getResult();
+                    data.addAll(cTaxi);
+                    break;
+                default:
+                    ///throw new DataReaderNotFoundException("Data Reader Not Found! Please,check the reader name.");
             }
 
         }catch (SAXException | IOException |ParserConfigurationException e) {

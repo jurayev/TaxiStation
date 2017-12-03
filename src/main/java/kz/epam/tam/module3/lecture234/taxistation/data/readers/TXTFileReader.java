@@ -1,6 +1,6 @@
 package kz.epam.tam.module3.lecture234.taxistation.data.readers;
 
-import kz.epam.tam.module3.lecture234.taxistation.exceptions.DataReaderNotFoundException;
+
 import kz.epam.tam.module3.lecture234.taxistation.exceptions.InvalidDataException;
 import kz.epam.tam.module3.lecture234.taxistation.exceptions.InvalidListSizeException;
 import kz.epam.tam.module3.lecture234.taxistation.model.CargoTaxi;
@@ -15,15 +15,9 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 
-public class TXTFileReader implements IReader{
+public class TXTFileReader implements IReader<Vehicle>{
 
-    public List<Vehicle> readData() {
-        List<Vehicle> vehicleList = new ArrayList<>();
-        vehicleList.addAll(vehicleData("passengerTaxiTXT"));
-        vehicleList.addAll(vehicleData("cargoTaxiTXT"));
-        return vehicleList;
-    }
-    public List<Vehicle> vehicleData(String file)throws InvalidListSizeException,InvalidDataException{
+    public List<Vehicle> readPTaxiData(String file)throws InvalidListSizeException,InvalidDataException{
         BufferedReader reader = null;
         String line;
         List<Vehicle> vehicleList = new ArrayList<>();
@@ -76,28 +70,28 @@ public class TXTFileReader implements IReader{
         }
         return vehicleList;
     }
-    public void listSizeAssertion(String[] data){
+    public void listSizeAssertion(String[] data)throws InvalidListSizeException{
         if (data.length != 5) {
             throw new InvalidListSizeException("A car must contain 5 obligatory fields.",data.length);
         }
     }
-    public void passengerDataValidation(String[] data){
+    public void passengerDataValidation(String[] data)throws InvalidDataException{
         if(Long.parseLong(data[1]) <= 0 || Integer.parseInt(data[2]) <= 0){
             throw new InvalidDataException("Validation has detected invalid input data. Price and consumption must be positive and not equals to zero. ",
                     data[1],data[2]);}
     }
-    public void cargoDataValidation(String[] data){
+    public void cargoDataValidation(String[] data)throws InvalidDataException{
         if(Long.parseLong(data[1]) <= 0 || Integer.parseInt(data[2]) <= 0|| Integer.parseInt(data[3]) <= 0){
             throw new InvalidDataException("Validation has detected invalid input data. Price , consumption , capacity must be positive and not equals to zero. ",
                     data[1],data[2]);}
     }
-    public void passengerDataValidationUsingReplacement(String[] data){
+    public void passengerDataValidationUsingReplacement(String[] data)throws InvalidDataException{
         if(Long.parseLong(data[1].replaceAll("[^0-9]", "")) <= 0 ||
                 Integer.parseInt(data[2].replaceAll("[^0-9]", "")) <= 0){
             throw new InvalidDataException("Validation has detected invalid input data. Price and consumption must be positive and not equals to zero. ",
                     data[1],data[2]);}
     }
-    public void cargoDataValidationUsingReplacement(String[] data){
+    public void cargoDataValidationUsingReplacement(String[] data)throws InvalidDataException{
         if(Long.parseLong(data[1].replaceAll("[^0-9]", "")) <= 0 || Integer.parseInt(data[2].replaceAll("[^0-9]", "")) <= 0
                 || Integer.parseInt(data[3].replaceAll("[^0-9]", "")) <= 0){
             throw new InvalidDataException("Validation has detected invalid input data. Price , consumption , capacity must be positive and not equals to zero. ",

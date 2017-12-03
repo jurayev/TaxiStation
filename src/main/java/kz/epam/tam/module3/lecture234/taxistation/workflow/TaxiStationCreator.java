@@ -24,9 +24,9 @@ public class TaxiStationCreator {
         String errors = null;
 
         try {
-            pTaxiList = Adder.addVehicle();
-            cTaxiList = Adder.addCargoTaxi();
-            vehicleList.addAll(pTaxiList);
+            vehicleList = Adder.addVehicle();
+            ///cTaxiList = Adder.addCargoTaxi();
+            ///vehicleList.addAll(pTaxiList);
 
         }catch (DataReaderNotFoundException e){
             errors = e.getMessage();
@@ -44,7 +44,8 @@ public class TaxiStationCreator {
         }
         //// add to list for saving
         List<String> addedCarsList = new ArrayList<>();
-        Converter.convertObjectsToString(pTaxiList,addedCarsList);
+        cTaxiList.retainAll(vehicleList);
+        Converter.convertObjectsToString(vehicleList,addedCarsList);
 /// count price
         long countCar = Counter.countCarsPrice(pTaxiList);
 ///sort

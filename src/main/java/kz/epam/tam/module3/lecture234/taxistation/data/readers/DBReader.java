@@ -1,6 +1,8 @@
 package kz.epam.tam.module3.lecture234.taxistation.data.readers;
 
+import kz.epam.tam.module3.lecture234.taxistation.model.CargoTaxi;
 import kz.epam.tam.module3.lecture234.taxistation.model.PassengerTaxi;
+import kz.epam.tam.module3.lecture234.taxistation.model.Vehicle;
 import org.apache.derby.jdbc.EmbeddedDriver;
 
 import java.sql.*;
@@ -11,15 +13,14 @@ import java.util.ResourceBundle;
 public class DBReader implements IReader{
 
     private static final ResourceBundle configBundle = ResourceBundle.getBundle("database");
-    private static  final String SQL_SELECT = "SELECT * FROM CARS";
     private String url = configBundle.getString("url");
     private String login = configBundle.getString("login");
     private String password = configBundle.getString("password");
 
 
-    public List<PassengerTaxi> readData(){
+    public List<Vehicle> readData(String sql){
 
-        List<PassengerTaxi> data = new ArrayList<>();
+        List<Vehicle> data = new ArrayList<>();
         ResultSet rs = null;
         Connection con = null;
         Statement statement = null;
@@ -28,11 +29,23 @@ public class DBReader implements IReader{
             DriverManager.registerDriver(new EmbeddedDriver());
             con = DriverManager.getConnection(url,login,password);
             statement = con.createStatement();
-            rs = statement.executeQuery(SQL_SELECT);
-            while (rs.next()){
-                data.add(new PassengerTaxi(rs.getString("model"),rs.getInt("price"),
-                        rs.getInt("consumption"),rs.getString("body"), rs.getString("body")));
+            switch (sql){
+                case "SELECT * FROM PASSENGERTAXI":
+                    rs = statement.executeQuery(sql);
+                    while (rs.next()){
+                        data.add(new PassengerTaxi(rs.getString("model"),rs.getInt("price"),
+                                rs.getInt("consumption"),rs.getString("body"), rs.getString("body")));
+                    }
+                    break;
+                case "SELECT * FROM CARGOTAXI":
+                    rs = statement.executeQuery(sql);
+                    while (rs.next()){
+                        data.add(new CargoTaxi(rs.getString("model"),rs.getInt("price"),
+                                rs.getInt("consumption"),rs.getInt("capacity"), rs.getString("shipping")));
+                    }
+                    break;
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

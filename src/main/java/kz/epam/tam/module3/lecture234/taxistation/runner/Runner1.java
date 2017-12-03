@@ -1,4 +1,32 @@
 package kz.epam.tam.module3.lecture234.taxistation.runner;
+
+import kz.epam.tam.module3.lecture234.taxistation.model.CargoTaxi;
+import kz.epam.tam.module3.lecture234.taxistation.model.PassengerTaxi;
+import kz.epam.tam.module3.lecture234.taxistation.model.Vehicle;
+import kz.epam.tam.module3.lecture234.taxistation.workflow.TaxiStationCreator;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Runner1 {
+    public static void main(String[] args) {
+
+        List<PassengerTaxi> pTaxiList = new ArrayList<>();
+        List<CargoTaxi> cTaxiList = new ArrayList<>();
+        List<Vehicle> vehicleList = new ArrayList<>();
+        pTaxiList.add(new PassengerTaxi("pass",12,15,"sedan","comfort"));
+        cTaxiList.add(new CargoTaxi("cargo",1000,20,55,"intercity"));
+        vehicleList.addAll(pTaxiList);
+        vehicleList.addAll(cTaxiList);
+        vehicleList.spliterator().characteristics();
+        List<PassengerTaxi> passengerTaxisList = new ArrayList<>();
+        List<CargoTaxi> cargoTaxisList = new ArrayList<>();
+        passengerTaxisList.listIterator();
+
+        System.out.println();
+
+    }
+}
 /*
 import kz.epam.tam.module3.lecture234.taxistation.data.readers.DBReader;
 import kz.epam.tam.module3.lecture234.taxistation.data.readers.IReader;

@@ -16,24 +16,27 @@ public class Adder {
     public static List<Vehicle> addVehicle() throws DataReaderNotFoundException,InvalidListSizeException,InvalidDataException{
         String picker = ResourceBundle.getBundle("workflowvariables").getString("reader");
         List<Vehicle> vehicleList = new ArrayList<>();
-        List<PassengerTaxi> passengerTaxiList;
-        IReader reader;
+        IReader<PassengerTaxi> reader;
         switch (picker) {
             case "txt":
                 reader = new TXTFileReader();
-                vehicleList = reader.readData();
+                vehicleList.addAll(reader.readData("passengerTaxiTXT"));
+                vehicleList.addAll(reader.readData("cargoTaxiTXT"));
                 break;
             case "xml":
                 reader = new XMLReader();
-                passengerTaxiList = reader.readData();
+                vehicleList.addAll(reader.readData("passengerTaxiXML"));
+                vehicleList.addAll(reader.readData("cargoTaxiXML"));
                 break;
             case "json":
                 reader = new JSONReader();
-                passengerTaxiList = reader.readData();
+                vehicleList.addAll(reader.readData("passengerTaxiJSON"));
+                vehicleList.addAll(reader.readData("cargoTaxiJSON"));
                 break;
             case "db":
                 reader = new DBReader();
-                passengerTaxiList = reader.readData();
+                vehicleList.addAll(reader.readData("SELECT * FROM PASSENGERTAXI"));
+                vehicleList.addAll(reader.readData("SELECT * FROM CARGOTAXI"));
                 break;
             default:
                 throw new DataReaderNotFoundException("Data Reader Not Found! Please,check the reader name.");
