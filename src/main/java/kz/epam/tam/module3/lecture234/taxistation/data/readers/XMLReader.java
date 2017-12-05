@@ -18,9 +18,10 @@ import java.util.ResourceBundle;
 
 public class XMLReader implements IReader{
 
-    public List<Vehicle> readData(String file) {
+    public List<PassengerTaxi> readData(String file) {
         List<Vehicle> data = new ArrayList<>();
-
+        List<CargoTaxi> cTaxi = new ArrayList<>();
+        List<PassengerTaxi> pTaxi = new ArrayList<>();
         try {
             SAXParserFactory parserFactory = SAXParserFactory.newInstance();
             SAXParser parser = parserFactory.newSAXParser();
@@ -29,15 +30,17 @@ public class XMLReader implements IReader{
                 case "passengerTaxiXML":
                     PassengerTaxiSAXParser taxiHandler = new PassengerTaxiSAXParser();
                     parser.parse(new File(bundle), taxiHandler);
-                    List<PassengerTaxi> pTaxi = taxiHandler.getResult();
+                    pTaxi = taxiHandler.getResult();
                     data.addAll(pTaxi);
+
                     break;
-                case "cargoTaxiXML":
+                /*case "cargoTaxiXML":
                     CargoTaxiSAXParser cargoHandler = new CargoTaxiSAXParser();
                     parser.parse(new File(bundle), cargoHandler);
-                    List<CargoTaxi> cTaxi = cargoHandler.getResult();
+                    cTaxi = cargoHandler.getResult();
                     data.addAll(cTaxi);
-                    break;
+                    return cTaxi;
+                    break;*/
                 default:
                     ///throw new DataReaderNotFoundException("Data Reader Not Found! Please,check the reader name.");
             }
@@ -45,6 +48,6 @@ public class XMLReader implements IReader{
         }catch (SAXException | IOException |ParserConfigurationException e) {
             e.printStackTrace();
         }
-        return data;
+        return pTaxi;
     }
 }

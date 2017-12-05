@@ -1,5 +1,6 @@
 package kz.epam.tam.module3.lecture234.taxistation.workflow;
 
+import kz.epam.tam.module3.lecture234.taxistation.data.readers.TXTFileReader;
 import kz.epam.tam.module3.lecture234.taxistation.data.writers.TxtFileWriter;
 import kz.epam.tam.module3.lecture234.taxistation.exceptions.DataReaderNotFoundException;
 import kz.epam.tam.module3.lecture234.taxistation.exceptions.InvalidDataException;
@@ -24,6 +25,10 @@ public class TaxiStationCreator {
         String errors = null;
 
         try {
+            Adder adder = new Adder();
+            adder.addVehicle();
+            TXTFileReader txt = new TXTFileReader();
+            cTaxiList = txt.getcTaxi();
             vehicleList = Adder.addVehicle();
             ///cTaxiList = Adder.addCargoTaxi();
             ///vehicleList.addAll(pTaxiList);

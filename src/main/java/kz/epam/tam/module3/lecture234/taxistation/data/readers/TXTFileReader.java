@@ -15,12 +15,34 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 
-public class TXTFileReader implements IReader<Vehicle>{
+public class TXTFileReader implements IReader{
 
-    public List<Vehicle> readPTaxiData(String file)throws InvalidListSizeException,InvalidDataException{
+    public List<PassengerTaxi> getpTaxi() {
+        return pTaxi;
+    }
+
+    public void setpTaxi(List<PassengerTaxi> pTaxi) {
+        this.pTaxi = pTaxi;
+    }
+
+    public List<CargoTaxi> getcTaxi() {
+        return cTaxi;
+    }
+
+    public void setcTaxi(List<CargoTaxi> cTaxi) {
+        this.cTaxi = cTaxi;
+    }
+
+    private List<PassengerTaxi> pTaxi = new ArrayList<>();
+    private List<CargoTaxi> cTaxi = new ArrayList<>();
+
+
+
+    public void readData(String file)throws InvalidListSizeException,InvalidDataException{
         BufferedReader reader = null;
         String line;
-        List<Vehicle> vehicleList = new ArrayList<>();
+        ///List<PassengerTaxi> vehicleList = new ArrayList<>();
+        ///List<CargoTaxi> li = new ArrayList<>();
         try{
             reader = new BufferedReader(new FileReader(ResourceBundle.getBundle("filepath").getString(file)));
             while((line = reader.readLine()) != null){
@@ -30,17 +52,18 @@ public class TXTFileReader implements IReader<Vehicle>{
                     switch (file){
                         case "passengerTaxiTXT":
                             passengerDataValidation(data);
-                            vehicleList.add(new PassengerTaxi(data[0], Long.parseLong(data[1]), Integer.parseInt(data[2]), data[3], data[4]));
+                            //vehicleList.add(new PassengerTaxi(data[0], Long.parseLong(data[1]), Integer.parseInt(data[2]), data[3], data[4]));
+                            this.pTaxi.add(new PassengerTaxi(data[0], Long.parseLong(data[1]), Integer.parseInt(data[2]), data[3], data[4]));
                             break;
                         case "cargoTaxiTXT":
                             cargoDataValidation(data);
-                            vehicleList.add(new CargoTaxi(data[0], Long.parseLong(data[1]), Integer.parseInt(data[2]), Integer.parseInt(data[3]), data[4]));
+                            this.cTaxi.add(new CargoTaxi(data[0], Long.parseLong(data[1]), Integer.parseInt(data[2]), Integer.parseInt(data[3]), data[4]));
                             break;
                         default:
                             ///throw new DataReaderNotFoundException("Data Reader Not Found! Please,check the reader name.");
                     }
                 } catch (NumberFormatException e) {
-                    switch (file){
+                    /*switch (file){
                         case "passengerTaxiTXT":
                             passengerDataValidationUsingReplacement(data);
                             vehicleList.add(new PassengerTaxi(data[0], Long.parseLong(data[1].replaceAll("[^0-9]", "")),
@@ -52,10 +75,10 @@ public class TXTFileReader implements IReader<Vehicle>{
                                     Integer.parseInt(data[2].replaceAll("[^0-9]", "")), Integer.parseInt(data[3].replaceAll("[^0-9]", "")), data[4]));
                             break;
                         default:
-                            ///throw new DataReaderNotFoundException("Data Reader Not Found! Please,check the reader name.");
+                            ///throw new DataReaderNotFoundException("Data Reader Not Found! Please,check the reader name.");*/
                     }
                 }
-            }
+
         }catch(IOException e){
             e.printStackTrace();
         }
@@ -68,8 +91,9 @@ public class TXTFileReader implements IReader<Vehicle>{
                 e2.printStackTrace();
             }
         }
-        return vehicleList;
+        List<? extends Vehicle> newlist = new ArrayList<>();
     }
+
     public void listSizeAssertion(String[] data)throws InvalidListSizeException{
         if (data.length != 5) {
             throw new InvalidListSizeException("A car must contain 5 obligatory fields.",data.length);

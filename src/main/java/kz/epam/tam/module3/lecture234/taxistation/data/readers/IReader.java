@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface IReader {
 
-    List<Vehicle> readPTaxiData(String file)throws InvalidListSizeException,InvalidDataException;
+    void readData(String file)throws InvalidListSizeException,InvalidDataException;
 
-    List<Vehicle> readCTaxiData(String file)throws InvalidListSizeException,InvalidDataException;
+    //List<Vehicle> readCTaxiData(String file)throws InvalidListSizeException,InvalidDataException;
 }

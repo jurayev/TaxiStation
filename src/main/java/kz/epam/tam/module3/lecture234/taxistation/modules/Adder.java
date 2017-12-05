@@ -13,17 +13,17 @@ import java.util.ResourceBundle;
 
 public class Adder {
 
-    public static List<Vehicle> addVehicle() throws DataReaderNotFoundException,InvalidListSizeException,InvalidDataException{
+    public void addVehicle() throws DataReaderNotFoundException,InvalidListSizeException,InvalidDataException{
         String picker = ResourceBundle.getBundle("workflowvariables").getString("reader");
-        List<Vehicle> vehicleList = new ArrayList<>();
-        IReader<PassengerTaxi> reader;
+
+        IReader reader;
         switch (picker) {
             case "txt":
                 reader = new TXTFileReader();
-                vehicleList.addAll(reader.readData("passengerTaxiTXT"));
-                vehicleList.addAll(reader.readData("cargoTaxiTXT"));
+                reader.readData("passengerTaxiTXT");
+
                 break;
-            case "xml":
+            /*case "xml":
                 reader = new XMLReader();
                 vehicleList.addAll(reader.readData("passengerTaxiXML"));
                 vehicleList.addAll(reader.readData("cargoTaxiXML"));
@@ -37,10 +37,9 @@ public class Adder {
                 reader = new DBReader();
                 vehicleList.addAll(reader.readData("SELECT * FROM PASSENGERTAXI"));
                 vehicleList.addAll(reader.readData("SELECT * FROM CARGOTAXI"));
-                break;
+                break;*/
             default:
                 throw new DataReaderNotFoundException("Data Reader Not Found! Please,check the reader name.");
         }
-        return vehicleList;
     }
 }

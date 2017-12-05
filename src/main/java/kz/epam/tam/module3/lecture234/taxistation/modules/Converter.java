@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Converter {
 
-    public static void convertObjectsToString(List<Vehicle> carsList, List<String> addedCarsList){
+    public static void convertObjectsToString(List<? extends Vehicle> carsList, List<String> addedCarsList){
 
         for (int i = 0; i < carsList.size(); i++) {
             addedCarsList.add("\n" + carsList.get(i).getInfo());
