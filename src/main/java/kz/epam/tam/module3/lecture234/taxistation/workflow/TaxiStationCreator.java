@@ -6,7 +6,7 @@ import kz.epam.tam.module3.lecture234.taxistation.exceptions.InvalidDataExceptio
 import kz.epam.tam.module3.lecture234.taxistation.exceptions.InvalidListSizeException;
 import kz.epam.tam.module3.lecture234.taxistation.model.CargoTaxi;
 import kz.epam.tam.module3.lecture234.taxistation.model.PassengerTaxi;
-import kz.epam.tam.module3.lecture234.taxistation.model.Vehicle;
+import kz.epam.tam.module3.lecture234.taxistation.model.Taxi;
 import kz.epam.tam.module3.lecture234.taxistation.modules.*;
 
 import java.util.ArrayList;
@@ -20,13 +20,13 @@ public class TaxiStationCreator {
         ///add
         List<PassengerTaxi> pTaxiList = new ArrayList<>();
         List<CargoTaxi> cTaxiList = new ArrayList<>();
-        List<Vehicle> vehicleList = new ArrayList<>();
+        List<Taxi> taxiList = new ArrayList<>();
         String errors = null;
        
         try {
             pTaxiList = Adder.addPassengerTaxi();
             cTaxiList = Adder.addCargoTaxi();
-            vehicleList.addAll(pTaxiList);
+            taxiList.addAll(pTaxiList);
 
         }catch (DataReaderNotFoundException e){
             errors = e.getMessage();

@@ -1,6 +1,6 @@
 package kz.epam.tam.module3.lecture234.taxistation.model;
-
-public class CargoTaxi extends Vehicle {
+/*
+public class CargoTaxi extends Taxi {
 
     private int capacity;
     private String shipping;
@@ -27,5 +27,5 @@ public class CargoTaxi extends Vehicle {
     public String getInfo(){
         return super.getInfo() + ", Capacity: " + this.capacity + ", Shipping: " + this.shipping;
     }
-}
+}*/
 

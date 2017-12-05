@@ -9,7 +9,7 @@ import kz.epam.tam.module3.lecture234.taxistation.exceptions.EmptySearchResultEx
 import kz.epam.tam.module3.lecture234.taxistation.exceptions.InvalidDataException;
 import kz.epam.tam.module3.lecture234.taxistation.exceptions.InvalidListSizeException;
 import kz.epam.tam.module3.lecture234.taxistation.model.PassengerTaxi;
-import kz.epam.tam.module3.lecture234.taxistation.model.Vehicle;
+import kz.epam.tam.module3.lecture234.taxistation.model.Taxi;
 import kz.epam.tam.module3.lecture234.taxistation.utils.AddAVehicleFromTXT;
 import kz.epam.tam.module3.lecture234.taxistation.utils.FindByParameter;
 import kz.epam.tam.module3.lecture234.taxistation.utils.FuelConsumptionComparator;
@@ -22,7 +22,7 @@ public class Runner1 {
         boolean repeat = true;
 
         List<PassengerTaxi> carList = new ArrayList<>();
-        List<Vehicle> vehicleList = new ArrayList<>();
+        List<Taxi> vehicleList = new ArrayList<>();
         List<String> sortedByConsumptionList = new ArrayList<>();
         long countCar = 0;
         String search = "Search result is empty";
@@ -90,7 +90,7 @@ public class Runner1 {
                         break;
                     case 2:
                         System.out.println("Count taxi station budget");
-                        for (Vehicle taxiPrice : vehicleList){
+                        for (Taxi taxiPrice : vehicleList){
                             countCar +=  taxiPrice.getVehiclePrice();
                         }
                         System.out.println("Budget is " + countCar);

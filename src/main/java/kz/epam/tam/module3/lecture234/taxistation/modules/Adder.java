@@ -5,15 +5,16 @@ import kz.epam.tam.module3.lecture234.taxistation.exceptions.DataReaderNotFoundE
 import kz.epam.tam.module3.lecture234.taxistation.exceptions.InvalidDataException;
 import kz.epam.tam.module3.lecture234.taxistation.exceptions.InvalidListSizeException;
 import kz.epam.tam.module3.lecture234.taxistation.model.PassengerTaxi;
+import kz.epam.tam.module3.lecture234.taxistation.model.Taxi;
 
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class Adder {
 
-    public static List<PassengerTaxi> addCars() throws DataReaderNotFoundException,InvalidListSizeException,InvalidDataException{
+    public static List<Taxi> addCars() throws DataReaderNotFoundException,InvalidListSizeException,InvalidDataException{
         String picker = ResourceBundle.getBundle("workflowvariables").getString("reader");
-        List<PassengerTaxi> passengerTaxiList;
+        List<Taxi> passengerTaxiList;
         IReader reader;
         switch (picker) {
             case "txt":

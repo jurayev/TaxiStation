@@ -1,6 +1,6 @@
 package kz.epam.tam.module3.lecture234.taxistation.model;
-
-public class PassengerTaxi extends Vehicle {
+/*
+public class PassengerTaxi extends Taxi {
     private String bodyType;
     private  String taxiClass;
 
@@ -28,4 +28,4 @@ public class PassengerTaxi extends Vehicle {
     public String getInfo(){
         return super.getInfo() + ", Body type: " + this.bodyType + ", Class: " + this.taxiClass;
     }
-}
+}*/
