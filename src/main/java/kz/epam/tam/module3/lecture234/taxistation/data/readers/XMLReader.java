@@ -1,7 +1,7 @@
 package kz.epam.tam.module3.lecture234.taxistation.data.readers;
 
 import kz.epam.tam.module3.lecture234.taxistation.data.parsers.VehicleSAXParser;
-import kz.epam.tam.module3.lecture234.taxistation.model.PassengerTaxi;
+import kz.epam.tam.module3.lecture234.taxistation.model.Taxi;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -15,8 +15,8 @@ import java.util.ResourceBundle;
 
 public class XMLReader implements IReader{
 
-    public List<PassengerTaxi> readData() {
-        List<PassengerTaxi> data = new ArrayList<>();
+    public List<Taxi> readData() {
+        List<Taxi> data = new ArrayList<>();
         SAXParserFactory parserFactory = SAXParserFactory.newInstance();
         VehicleSAXParser handler;
         try {

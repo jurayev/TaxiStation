@@ -1,6 +1,6 @@
 package kz.epam.tam.module3.lecture234.taxistation.data.parsers;
 
-import kz.epam.tam.module3.lecture234.taxistation.model.PassengerTaxi;
+import kz.epam.tam.module3.lecture234.taxistation.model.Taxi;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -10,8 +10,8 @@ import java.util.List;
 
 public class VehicleSAXParser extends DefaultHandler {
 
-    private PassengerTaxi passengerTaxi;
-    private List<PassengerTaxi> passengerTaxis = new ArrayList<>();
+    private Taxi Taxi;
+    private List<Taxi> Taxis = new ArrayList<>();
     private StringBuilder thisElement;
 
     public VehicleSAXParser() {
@@ -22,19 +22,19 @@ public class VehicleSAXParser extends DefaultHandler {
 
     public void startElement(String namespaceURI, String localName, String qName, Attributes atts) throws SAXException {
         this.thisElement = new StringBuilder();
-        if (qName.equals("passengerTaxi")) {
-            this.passengerTaxi = new PassengerTaxi();
+        if (qName.equals("Taxi")) {
+            this.Taxi = new Taxi();
         }
     }
 
     public void endElement(String namespaceURI, String localName, String qName) throws SAXException {
-        if (qName.equals("passengerTaxi")) {
-            this.passengerTaxis.add(this.passengerTaxi);
+        if (qName.equals("Taxi")) {
+            this.Taxis.add(this.Taxi);
         } else {
             String elementVal = this.thisElement.toString();
             switch (qName){
                 case "model":
-                    this.passengerTaxi.setModel(elementVal);
+                    this.Taxi.setModel(elementVal);
                     break;
 
                 case "price":
@@ -43,7 +43,7 @@ public class VehicleSAXParser extends DefaultHandler {
                         price = Long.parseLong(elementVal);
                     }catch (NumberFormatException e){
                         price = Long.parseLong(elementVal.replaceAll("[^0-9]", ""));
-                    }this.passengerTaxi.setVehiclePrice(price);
+                    }this.Taxi.setVehiclePrice(price);
                     break;
                 case "consumption":
                     int cons;
@@ -52,13 +52,13 @@ public class VehicleSAXParser extends DefaultHandler {
                     }catch (NumberFormatException e){
                         cons = Integer.parseInt(elementVal.replaceAll("[^0-9]", ""));
                     }
-                    this.passengerTaxi.setFuelConsumption(cons);
+                    this.Taxi.setFuelConsumption(cons);
                     break;
                 case "btype":
-                    this.passengerTaxi.setBodyType(elementVal);
+                    this.Taxi.setBodyType(elementVal);
                     break;
                 case "class":
-                    this.passengerTaxi.setTaxiClass(elementVal);
+                    this.Taxi.setTaxiClass(elementVal);
             }
         }
         this.thisElement = new StringBuilder();
@@ -71,8 +71,8 @@ public class VehicleSAXParser extends DefaultHandler {
         this.thisElement.append(ch, start, length);
     }
 
-    public List<PassengerTaxi> getResultCar(){
-        return this.passengerTaxis;
+    public List<Taxi> getResultCar(){
+        return this.Taxis;
     }
 }
 
