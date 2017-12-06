@@ -1,15 +1,15 @@
 package kz.epam.tam.module3.lecture234.taxistation.utils;
 
-import kz.epam.tam.module3.lecture234.taxistation.model.PassengerTaxi;
 import kz.epam.tam.module3.lecture234.taxistation.exceptions.EmptySearchResultException;
+import kz.epam.tam.module3.lecture234.taxistation.model.Taxi;
 
 import java.util.List;
 
 public class FindByParameter {
 
-    public static String findACarByParameter(String value, List<PassengerTaxi> list)throws EmptySearchResultException{
+    public static String findACarByParameter(String value, List<Taxi> list)throws EmptySearchResultException{
         String carOutPut = "Search result:";
-        for( PassengerTaxi passengerTaxi : list){
+        for( Taxi passengerTaxi : list){
             if(value.equals(passengerTaxi.getModel())){
                 carOutPut += "\n" + passengerTaxi.getInfo();
             }
