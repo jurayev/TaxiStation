@@ -14,11 +14,8 @@ public class TaxiStationCreator {
 
     public void createTaxiStation(){
 
-        System.out.println("Start");
-        ///add
         List<Taxi> taxiList = new ArrayList<>();
         String errors = null;
-       
         try {
             taxiList = Adder.addCars();
         }catch (DataReaderNotFoundException e){
@@ -35,20 +32,14 @@ public class TaxiStationCreator {
             System.out.println(ide.getMessage() + "Found: price is " + ide.getExceptionPrice() +
                     ", consumption is " + ide.getExceptionConsumption());
         }
-        //// add to list for saving
-        List<String> addedCarsList = new ArrayList<>();
-        Converter.convertObjectsToString(taxiList,addedCarsList);
-/// count price
+        List<String> addedTaxisList = new ArrayList<>();
+        Converter.convertObjectsToString(taxiList,addedTaxisList);
         long countCar = Counter.countCarsPrice(taxiList);
-///sort
         List<String> sortedList = new ArrayList<>();
         Sorter.sortCars(taxiList,sortedList);
-///search
         String search = Searcher.searchACar(taxiList);
-        ////write
         TxtFileWriter writer = new TxtFileWriter();
-        writer.writeToFile(countCar, addedCarsList, sortedList, search, errors);
-        System.out.println("Exit");
+        writer.writeToFile(countCar, addedTaxisList, sortedList, search, errors);
     }
 }
 

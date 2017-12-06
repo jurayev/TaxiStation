@@ -13,7 +13,6 @@ public class Sorter {
         Collections.sort(taxiList, new FuelConsumptionComparator());
         for (int i = 0; i < taxiList.size(); i++) {
             sortedList.add("\n"+ taxiList.get(i).getInfo());
-            System.out.println(taxiList.get(i).getInfo());
         }
     }
 }

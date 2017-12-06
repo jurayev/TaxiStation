@@ -11,7 +11,6 @@ public class Converter {
 
         for (int i = 0; i < taxiList.size(); i++) {
             addedCarsList.add("\n" + taxiList.get(i).getInfo());
-            System.out.println(taxiList.get(i).getInfo());
         }
     }
 }

@@ -12,7 +12,7 @@ public class TxtFileWriter {
         BufferedWriter writer = null;
         try {
             writer = new BufferedWriter(new FileWriter(ResourceBundle.getBundle("filepath").getString("resultstxt")));
-            String data = "All operations are recorded.\n\n" + "Add cars to taxi station:\n" + addedCarsList + ";\n\nBudget is " + countCar + ";\n\nSort By fuel consumption:\n" + sortedList
+            String data = "All operations are recorded.\n\n" + "Add taxis to taxi station:\n" + addedCarsList + ";\n\nBudget is " + countCar + ";\n\nSort By fuel consumption:\n" + sortedList
                     + ";\n\n" + search +";\n\n";
             if(errors == null){
             writer.write(data);

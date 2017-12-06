@@ -10,8 +10,8 @@ import java.util.List;
 
 public class TaxiSAXParser extends DefaultHandler {
 
-    private Taxi Taxi;
-    private List<Taxi> Taxis = new ArrayList<>();
+    private Taxi taxi;
+    private List<Taxi> taxis = new ArrayList<>();
     private StringBuilder thisElement;
 
     public TaxiSAXParser() {
@@ -23,18 +23,18 @@ public class TaxiSAXParser extends DefaultHandler {
     public void startElement(String namespaceURI, String localName, String qName, Attributes atts) throws SAXException {
         this.thisElement = new StringBuilder();
         if (qName.equals("Taxi")) {
-            this.Taxi = new Taxi();
+            this.taxi = new Taxi();
         }
     }
 
     public void endElement(String namespaceURI, String localName, String qName) throws SAXException {
         if (qName.equals("Taxi")) {
-            this.Taxis.add(this.Taxi);
+            this.taxis.add(this.taxi);
         } else {
             String elementVal = this.thisElement.toString();
             switch (qName){
                 case "model":
-                    this.Taxi.setModel(elementVal);
+                    this.taxi.setModel(elementVal);
                     break;
 
                 case "price":
@@ -43,7 +43,7 @@ public class TaxiSAXParser extends DefaultHandler {
                         price = Long.parseLong(elementVal);
                     }catch (NumberFormatException e){
                         price = Long.parseLong(elementVal.replaceAll("[^0-9]", ""));
-                    }this.Taxi.setVehiclePrice(price);
+                    }this.taxi.setVehiclePrice(price);
                     break;
                 case "consumption":
                     int cons;
@@ -52,13 +52,13 @@ public class TaxiSAXParser extends DefaultHandler {
                     }catch (NumberFormatException e){
                         cons = Integer.parseInt(elementVal.replaceAll("[^0-9]", ""));
                     }
-                    this.Taxi.setFuelConsumption(cons);
+                    this.taxi.setFuelConsumption(cons);
                     break;
                 case "btype":
-                    this.Taxi.setBodyType(elementVal);
+                    this.taxi.setBodyType(elementVal);
                     break;
                 case "class":
-                    this.Taxi.setTaxiClass(elementVal);
+                    this.taxi.setTaxiClass(elementVal);
             }
         }
         this.thisElement = new StringBuilder();
@@ -71,8 +71,8 @@ public class TaxiSAXParser extends DefaultHandler {
         this.thisElement.append(ch, start, length);
     }
 
-    public List<Taxi> getResultCar(){
-        return this.Taxis;
+    public List<Taxi> getResult(){
+        return this.taxis;
     }
 }
 

@@ -11,7 +11,7 @@ import java.util.ResourceBundle;
 public class DBReader implements IReader{
 
     private static final ResourceBundle configBundle = ResourceBundle.getBundle("database");
-    private static  final String SQL_SELECT = "SELECT * FROM CARS";
+    private static  final String SQL_SELECT = "SELECT * FROM TAXIS";
     private String url = configBundle.getString("url");
     private String login = configBundle.getString("login");
     private String password = configBundle.getString("password");
@@ -31,7 +31,7 @@ public class DBReader implements IReader{
             rs = statement.executeQuery(SQL_SELECT);
             while (rs.next()){
                 data.add(new Taxi(rs.getString("model"),rs.getInt("price"),
-                        rs.getInt("consumption"),rs.getString("body"), rs.getString("body")));
+                        rs.getInt("consumption"),rs.getString("body"), rs.getString("class")));
             }
         } catch (SQLException e) {
             e.printStackTrace();

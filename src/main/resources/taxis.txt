@@ -1,6 +1,6 @@
-txt,2asd0sd0asd0,17,avante,econom
+ford,2asd0sd0asd0,17,avante,econom
 benz,5000,22,hatchback,business
 toyta,4000,10,vagon,comfort+
-bmw,4000,18,sedan,business
-kia,4000,19,hatchback,comfort
+bmw,7000,18,sedan,business
+kia,8000,19,hatchback,comfort
 renault,4000,20,hatchback,econom

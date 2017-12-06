@@ -23,7 +23,7 @@ public class XMLReader implements IReader{
             SAXParser parser = parserFactory.newSAXParser();
             handler = new TaxiSAXParser();
             parser.parse(new File(ResourceBundle.getBundle("filepath").getString("xml")), handler);
-            data = handler.getResultCar();
+            data = handler.getResult();
         }catch (SAXException | IOException |ParserConfigurationException e) {
             e.printStackTrace();
         }

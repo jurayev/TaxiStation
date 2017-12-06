@@ -4,7 +4,7 @@ import kz.epam.tam.module3.lecture234.taxistation.model.Taxi;
 
 import java.util.List;
 
-public class AddCarsToListJsonHelper {
+public class AddTaxisToListJsonHelper {
 
     private List<Taxi> taxis;
 

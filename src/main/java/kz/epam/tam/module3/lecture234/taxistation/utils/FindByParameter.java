@@ -9,24 +9,25 @@ public class FindByParameter {
 
     public static String findACarByParameter(String value, List<Taxi> list)throws EmptySearchResultException{
         String carOutPut = "Search result:";
-        for( Taxi passengerTaxi : list){
-            if(value.equals(passengerTaxi.getModel())){
-                carOutPut += "\n" + passengerTaxi.getInfo();
+        for( Taxi taxi : list){
+            if(value.equals(taxi.getModel())){
+                carOutPut += "\n" + taxi.getInfo();
             }
-            else if(Integer.parseInt(value) == passengerTaxi.getFuelConsumption()){
-                carOutPut += "\n" + passengerTaxi.getInfo();
+            else if(value.equals(Integer.toString(taxi.getFuelConsumption())) ){
+                carOutPut += "\n" + taxi.getInfo();
             }
-            else if(Long.parseLong(value) == passengerTaxi.getVehiclePrice()){
-                carOutPut += "\n" + passengerTaxi.getInfo();
+            else if(value.equals(Long.toString(taxi.getVehiclePrice())) ){
+                carOutPut += "\n" + taxi.getInfo();
             }
-            else if(value.equals(passengerTaxi.getBodyType())){
-                carOutPut += "\n" + passengerTaxi.getInfo();
+            else if(value.equals(taxi.getBodyType())){
+                carOutPut += "\n" + taxi.getInfo();
+            }
+            else if(value.equals(taxi.getTaxiClass())){
+                carOutPut += "\n" + taxi.getInfo();
             }
         }
         if(carOutPut.equals("Search result:")){
             throw new EmptySearchResultException(carOutPut + " nothing found!");
-        }else{
-            System.out.println(carOutPut);
         }
         return carOutPut;
     }

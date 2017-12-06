@@ -1,6 +1,6 @@
 {"taxis": [
       {
-        "model": "json",
+        "model": "ford",
         "fuelConsumption": "10",
         "bodyType": "sedan",
         "vehiclePrice": "4000",
