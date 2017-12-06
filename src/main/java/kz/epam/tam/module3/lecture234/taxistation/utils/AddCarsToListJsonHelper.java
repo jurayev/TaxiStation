@@ -6,10 +6,10 @@ import java.util.List;
 
 public class AddCarsToListJsonHelper {
 
-    private List<Taxi> passengerTaxis;
+    private List<Taxi> taxis;
 
-    public List<Taxi> getPassengerTaxis() {
-        return passengerTaxis;
+    public List<Taxi> getTaxis() {
+        return taxis;
     }
 
 }

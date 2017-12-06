@@ -7,11 +7,11 @@ import java.util.List;
 
 public class Converter {
 
-    public static void convertObjectsToString(List<Taxi> carsList, List<String> addedCarsList){
+    public static void convertObjectsToString(List<Taxi> taxiList, List<String> addedCarsList){
 
-        for (int i = 0; i < carsList.size(); i++) {
-            addedCarsList.add("\n" + carsList.get(i).getInfo());
-            System.out.println(carsList.get(i).getInfo());
+        for (int i = 0; i < taxiList.size(); i++) {
+            addedCarsList.add("\n" + taxiList.get(i).getInfo());
+            System.out.println(taxiList.get(i).getInfo());
         }
     }
 }

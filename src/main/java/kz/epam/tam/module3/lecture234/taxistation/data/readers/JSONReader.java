@@ -22,7 +22,7 @@ public class JSONReader implements IReader {
         try {
             reader = new BufferedReader(new FileReader(ResourceBundle.getBundle("filepath").getString("json")));
             jsonHelper = gson.fromJson(reader,AddCarsToListJsonHelper.class);
-            data = jsonHelper.getPassengerTaxis();
+            data = jsonHelper.getTaxis();
         } catch (IOException|JsonSyntaxException e) {
             e.printStackTrace();
         }catch (NumberFormatException e) {
