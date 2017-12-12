@@ -6,11 +6,11 @@ import java.util.List;
 
 public class Counter {
 
-    public static long countCarsPrice(List<Taxi> carsList){
-        long countCar = 0;
-        for (Taxi taxiPrice : carsList) {
-            countCar += taxiPrice.getVehiclePrice();
+    public static long countCarsPrice(List<Taxi> taxisList){
+        long countPrice = 0;
+        for (Taxi taxiPrice : taxisList) {
+            countPrice += taxiPrice.getVehiclePrice();
         }
-        return countCar;
+        return countPrice;
     }
 }

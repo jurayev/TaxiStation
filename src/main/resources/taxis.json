@@ -1,44 +1,48 @@
-{"taxis": [
-      {
-        "model": "ford",
-        "fuelConsumption": "10",
-        "bodyType": "sedan",
-        "vehiclePrice": "4000",
-        "taxiClass": "econom"
-      },
-      {
-        "model": "vw passat",
-        "fuelConsumption": "8",
-        "bodyType": "sedan",
-        "vehiclePrice": "6000",
-        "taxiClass": "comfort+"
-      },
-      {
-        "model": "opel",
-        "fuelConsumption": "9",
-        "bodyType": "hatchback",
-        "vehiclePrice": "3000",
-        "taxiClass": "comfort"
-      },
-      {
-        "model": "mazda",
-        "fuelConsumption": "15",
-        "bodyType": "vagon",
-        "vehiclePrice": "7000",
-        "taxiClass": "comfort"
-      },
-      {
-        "model": "benz",
-        "fuelConsumption": "20",
-        "bodyType": "vagon",
-        "vehiclePrice": "6000",
-        "taxiClass": "business"
-      },
-      {
-        "model": "kia",
-        "fuelConsumption": "11",
-        "bodyType": "fastback",
-        "vehiclePrice": "4000",
-        "taxiClass": "econom"
-      }]
+{ "taxis":[
+  {
+    "model": "ford",
+    "fuelConsumption": "10",
+    "bodyType": "sedan",
+    "vehiclePrice": "4000",
+    "taxiClass": "econom"
+  },
+  {
+    "model": "vw passat",
+    "fuelConsumption": "8",
+    "bodyType": "sedan",
+    "vehiclePrice": "6000",
+    "taxiClass": "comfort+"
+  },
+  {
+    "model": "opel",
+    "fuelConsumption": "9",
+    "bodyType": "hatchback",
+    "vehiclePrice": "3000",
+    "taxiClass": "comfort"
+  },
+  {
+    "model": "mazda",
+    "fuelConsumption": "15",
+    "bodyType": "vagon",
+    "vehiclePrice": "7000",
+    "taxiClass": "comfort"
+  },
+  {
+    "model": "benz",
+    "fuelConsumption": "20",
+    "bodyType": "vagon",
+    "vehiclePrice": "6000",
+    "taxiClass": "business"
+  },
+  {
+    "model": "kia",
+    "fuelConsumption": "11",
+    "bodyType": "fastback",
+    "vehiclePrice": "4000",
+    "taxiClass": "econom"
+  }
+  ]
 }
+
+
+
