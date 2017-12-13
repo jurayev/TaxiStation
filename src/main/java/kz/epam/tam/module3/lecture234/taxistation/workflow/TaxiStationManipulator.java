@@ -17,28 +17,22 @@ public class TaxiStationManipulator {
         String errors = "";
         TxtFileWriter writer = new TxtFileWriter();
         try {
-            TaxiStation st = new TaxiStation(Adder.addCars());
-            List<Taxi> taxis = st.getTaxis();
-            writer.writeToFile(st.toString(),false);
-            writer.writeToFile(Long.toString(Counter.countCarsPrice(taxis)),true);
-            writer.writeToFile(Sorter.sortCars(taxis).toString(),true);
+            TaxiStation station = new TaxiStation(Adder.addCars());
+            List<Taxi> taxis = station.getTaxis();
+            writer.writeToFile("Taxis: \n" + station.toString(),false);
+            writer.writeToFile("Overall taxis price: \n" + Long.toString(Counter.countCarsPrice(taxis)),true);
+            writer.writeToFile("Sorted taxis: \n" + Sorter.sortCars(taxis).toString(),true);
             writer.writeToFile(Searcher.searchATaxi(taxis),true);
         }catch (DataReaderNotFoundException e){
             errors = e.getMessage();
-            System.out.println(e.getMessage());
         }catch (InvalidListSizeException e) {
             errors = e.getMessage()+ " Actual number of fields is " + e.getExceptionCause() +
                     ". Please check an input data and try again!";
-            System.out.println(e.getMessage() + " Actual number of fields is " + e.getExceptionCause() +
-                    ". Please check an input data and try again!");
         }catch (InvalidDataException ide) {
             errors = ide.getMessage() + "Found: price is " + ide.getExceptionPrice() +
                     ", consumption is " + ide.getExceptionConsumption();
-            System.out.println(ide.getMessage() + "Found: price is " + ide.getExceptionPrice() +
-                    ", consumption is " + ide.getExceptionConsumption());
         }catch (EmptySearchResultException e) {
             e.getMessage();
-            System.out.println(e.getMessage());
         }
         if(!errors.equals("")){
             writer.writeToFile(errors,false);
