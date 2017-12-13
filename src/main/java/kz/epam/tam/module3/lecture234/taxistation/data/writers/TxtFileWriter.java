@@ -30,30 +30,3 @@ public class TxtFileWriter {
     }
 }
 
-/*
-    public void writeToFile(long countCar,List<String> addedCarsList, List<String> sortedList, String search,String errors) {
-        BufferedWriter writer = null;
-        try {
-            writer = new BufferedWriter(new FileWriter(ResourceBundle.getBundle("filepath").getString("resultstxt"),append));
-            String data = "All operations are recorded.\n\n" + "Add taxis to taxi station:\n" + addedCarsList + ";\n\nBudget is " + countCar + ";\n\nSort By fuel consumption:\n" + sortedList
-                    + ";\n\n" + search +";\n\n";
-            if(errors == null){
-                writer.write(data);
-            }else {
-                writer.write(data + "Found Errors:\n" + errors);
-            }
-            writer.newLine();
-            writer.flush();
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-        finally {
-            try {
-                if (writer != null) {
-                    writer.close();
-                }
-            } catch (IOException e2) {
-                e2.printStackTrace();
-            }
-        }
-    }*/
