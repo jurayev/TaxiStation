@@ -13,19 +13,15 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class JSONReader implements IReader {
-    private List<Taxi> taxis;
 
     public List<Taxi> readData(){
         Gson gson = new Gson();
-        AddTaxisToListJsonHelper jsonHelper;
         List<Taxi> data = new ArrayList<>();
         BufferedReader reader;
-        Taxi taxi = new Taxi();
         try {
             reader = new BufferedReader(new FileReader(ResourceBundle.getBundle("filepath").getString("json")));
-            JSONReader j = gson.fromJson(reader, JSONReader.class);
-            data = j.taxis;
-            //System.out.println(data1.getInfo());
+            AddTaxisToListJsonHelper jsonHelper = gson.fromJson(reader, AddTaxisToListJsonHelper.class);
+            data = jsonHelper.getTaxis();
         }catch (IOException|JsonSyntaxException e) {
             e.printStackTrace();
         }catch (NumberFormatException e) {
