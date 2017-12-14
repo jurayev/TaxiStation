@@ -5,6 +5,9 @@ public class InvalidDataException extends Exception {
     private String price;
     private String consumption;
 
+    public InvalidDataException(String message){
+        super(message);
+    }
     public InvalidDataException(String message,String price,String consumption){
         super(message);
         this.price = price;

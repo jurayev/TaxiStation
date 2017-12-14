@@ -1,11 +1,10 @@
 package kz.epam.tam.module3.lecture234.taxistation.data.readers;
 
 import kz.epam.tam.module3.lecture234.taxistation.model.Taxi;
+import kz.epam.tam.module3.lecture234.taxistation.model.TaxiStation;
 import org.apache.derby.jdbc.EmbeddedDriver;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class DBReader implements IReader{
@@ -17,9 +16,9 @@ public class DBReader implements IReader{
     private String password = configBundle.getString("password");
 
 
-    public List<Taxi> readData(){
+    public TaxiStation readData(){
 
-        List<Taxi> data = new ArrayList<>();
+        TaxiStation taxiStation = new TaxiStation();
         ResultSet rs = null;
         Connection con = null;
         Statement statement = null;
@@ -30,38 +29,36 @@ public class DBReader implements IReader{
             statement = con.createStatement();
             rs = statement.executeQuery(SQL_SELECT);
             while (rs.next()){
-                data.add(new Taxi(rs.getString("model"),rs.getInt("price"),
+                taxiStation.addTaxi(new Taxi(rs.getString("model"),rs.getInt("price"),
                         rs.getInt("consumption"),rs.getString("body"), rs.getString("class")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         finally {
-            try {
-                if (rs != null) {
+            if (rs != null) {
+                try{
                     rs.close();
+                }catch (SQLException e1) {
+                    e1.printStackTrace();
                 }
-            } catch (SQLException e1) {
-                e1.printStackTrace();
             }
-
-            try {
-                if (statement != null) {
+            if (statement != null) {
+                try{
                     statement.close();
+                }catch (SQLException e2) {
+                    e2.printStackTrace();
                 }
-            } catch (SQLException e2) {
-                e2.printStackTrace();
             }
-            try {
-                if (con != null) {
+            if (con != null) {
+                try{
                     con.close();
+                } catch (SQLException e3) {
+                    e3.printStackTrace();
                 }
-            } catch (SQLException e3) {
-                e3.printStackTrace();
             }
-
         }
-        return data;
+        return taxiStation;
     }
 
 }

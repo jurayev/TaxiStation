@@ -1,17 +1,16 @@
 package kz.epam.tam.module3.lecture234.taxistation.data.parsers;
 
 import kz.epam.tam.module3.lecture234.taxistation.model.Taxi;
+import kz.epam.tam.module3.lecture234.taxistation.model.TaxiStation;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class TaxiSAXParser extends DefaultHandler {
 
     private Taxi taxi;
-    private List<Taxi> taxis = new ArrayList<>();
+    private TaxiStation taxis = new TaxiStation();
     private StringBuilder thisElement;
 
     public TaxiSAXParser() {
@@ -22,21 +21,20 @@ public class TaxiSAXParser extends DefaultHandler {
 
     public void startElement(String namespaceURI, String localName, String qName, Attributes atts) throws SAXException {
         this.thisElement = new StringBuilder();
-        if (qName.equals("Taxi")) {
+        if (qName.equals("taxi")) {
             this.taxi = new Taxi();
         }
     }
 
     public void endElement(String namespaceURI, String localName, String qName) throws SAXException {
-        if (qName.equals("Taxi")) {
-            this.taxis.add(this.taxi);
+        if (qName.equals("taxi")) {
+            this.taxis.addTaxi(this.taxi);
         } else {
             String elementVal = this.thisElement.toString();
             switch (qName){
                 case "model":
                     this.taxi.setModel(elementVal);
                     break;
-
                 case "price":
                     long price;
                     try {
@@ -71,7 +69,7 @@ public class TaxiSAXParser extends DefaultHandler {
         this.thisElement.append(ch, start, length);
     }
 
-    public List<Taxi> getResult(){
+    public TaxiStation getResult(){
         return this.taxis;
     }
 }

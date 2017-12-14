@@ -2,82 +2,82 @@ package kz.epam.tam.module3.lecture234.taxistation.modules;
 
 import kz.epam.tam.module3.lecture234.taxistation.exceptions.EmptySearchResultException;
 import kz.epam.tam.module3.lecture234.taxistation.model.Taxi;
+import kz.epam.tam.module3.lecture234.taxistation.model.TaxiStation;
 
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class Searcher {
 
-    private static String result ="";
+    private static TaxiStation result = new TaxiStation();
 
-    public static String searchATaxi(List<Taxi> taxiList) throws EmptySearchResultException{
-        String search = "Search result by: ";
+    public static TaxiStation searchATaxi(TaxiStation taxiStation) throws EmptySearchResultException{
+        //String search = "Search result by: ";
         ResourceBundle bundle = ResourceBundle.getBundle("search");
         String param = bundle.getString("searchBy");
         String value = bundle.getString("value");
         try{
             switch (param){
                 case "model":
-                    search += findByModel(value, taxiList);
+                    findByModel(value, taxiStation);
                     break;
                 case "price":
-                    search += findByPrice(Long.parseLong(value), taxiList);
+                    findByPrice(Long.parseLong(value), taxiStation);
                     break;
                 case "consumption":
-                    search += findByConsumption(Integer.parseInt(value), taxiList);
+                    findByConsumption(Integer.parseInt(value), taxiStation);
                     break;
                 case "body":
-                    search += findByBody(value, taxiList);
+                    findByBody(value, taxiStation);
                     break;
                 case "class":
-                    search += findByClass(value, taxiList);
+                    findByClass(value, taxiStation);
                     break;
             }
         }catch (NumberFormatException ignored){}
-        if(search.equals("Search result by: ")){
-            throw new EmptySearchResultException(search + "nothing found!");
+        if(result.getTaxis().isEmpty()){
+            throw new EmptySearchResultException("Search result: nothing found!");
         }
-        return search;
+        return result;
     }
 
-    private static String findByClass(String taxiClass, List<Taxi> taxis){
-        for( Taxi taxi : taxis) {
+    private static void findByClass(String taxiClass, TaxiStation taxiStation){
+        for( Taxi taxi : taxiStation.getTaxis()) {
             if (taxiClass.equals(taxi.getTaxiClass())) {
-                result += "\nclass: " + taxi.getInfo();
+                result.addTaxi(taxi);
+                //result += "\nclass: " + taxi.toString();
             }
         }
-        return result;
     }
-    private static String findByBody(String body, List<Taxi> taxis){
-        for( Taxi taxi : taxis) {
+    private static void findByBody(String body, TaxiStation taxiStation){
+        for( Taxi taxi : taxiStation.getTaxis()) {
             if (body.equals(taxi.getBodyType())) {
-                result += "\nbody: " + taxi.getInfo();
+                result.addTaxi(taxi);
+                //result += "\nbody: " + taxi.toString();
             }
         }
-        return result;
     }
-    private static String findByConsumption(Integer consumption, List<Taxi> taxis){
-        for( Taxi taxi : taxis) {
+    private static void findByConsumption(Integer consumption, TaxiStation taxiStation){
+        for( Taxi taxi : taxiStation.getTaxis()) {
             if (consumption.equals(taxi.getFuelConsumption())) {
-                result += "\nconsumption: " + taxi.getInfo();
+                result.addTaxi(taxi);
+                //result += "\nconsumption: " + taxi.toString();
             }
         }
-        return result;
     }
-    private static String findByPrice(Long price, List<Taxi> taxis){
-        for( Taxi taxi : taxis) {
+    private static void findByPrice(Long price, TaxiStation taxiStation){
+        for( Taxi taxi : taxiStation.getTaxis()) {
             if (price.equals(taxi.getVehiclePrice())) {
-                result += "\nprice: " + taxi.getInfo();
+                result.addTaxi(taxi);
+                //result += "\nprice: " + taxi.toString();
             }
         }
-        return result;
     }
-    private static String findByModel(String model, List<Taxi> taxis){
-        for( Taxi taxi : taxis) {
+    private static void findByModel(String model, TaxiStation taxiStation){
+        for( Taxi taxi : taxiStation.getTaxis()) {
             if (model.equals(taxi.getModel())) {
-                result += "\nmodel: " + taxi.getInfo();
+                result.addTaxi(taxi);
+                //result += "\nmodel: " + taxi.toString();
             }
         }
-        return result;
     }
 }

@@ -2,31 +2,36 @@ package kz.epam.tam.module3.lecture234.taxistation.data.readers;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
-import kz.epam.tam.module3.lecture234.taxistation.model.Taxi;
-import kz.epam.tam.module3.lecture234.taxistation.utils.AddTaxisToListJsonHelper;
+import kz.epam.tam.module3.lecture234.taxistation.model.TaxiStation;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class JSONReader implements IReader {
 
-    public List<Taxi> readData(){
+    public TaxiStation readData(){
         Gson gson = new Gson();
-        List<Taxi> data = new ArrayList<>();
-        BufferedReader reader;
+        BufferedReader reader = null;
+        TaxiStation taxiStation = new TaxiStation();
         try {
             reader = new BufferedReader(new FileReader(ResourceBundle.getBundle("filepath").getString("json")));
-            AddTaxisToListJsonHelper jsonHelper = gson.fromJson(reader, AddTaxisToListJsonHelper.class);
-            data = jsonHelper.getTaxis();
+            taxiStation = gson.fromJson(reader, TaxiStation.class);
         }catch (IOException|JsonSyntaxException e) {
             e.printStackTrace();
         }catch (NumberFormatException e) {
             e.getCause();
         }
-        return data;
+        finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e2) {
+                    e2.printStackTrace();
+                }
+            }
+        }
+        return taxiStation;
     }
 }

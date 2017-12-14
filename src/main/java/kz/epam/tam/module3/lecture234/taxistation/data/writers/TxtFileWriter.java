@@ -14,17 +14,16 @@ public class TxtFileWriter {
             writer.write(data);
             writer.newLine();
             writer.newLine();
-            writer.flush();
         }catch (IOException e){
             e.printStackTrace();
         }
         finally {
-            try {
-                if (writer != null) {
+            if (writer != null) {
+                try {
                     writer.close();
+                } catch (IOException e2) {
+                    e2.printStackTrace();
                 }
-            } catch (IOException e2) {
-                e2.printStackTrace();
             }
         }
     }

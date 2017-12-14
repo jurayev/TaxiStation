@@ -53,8 +53,8 @@ public class Taxi {
         this.taxiClass = taxiClass;
     }
 
-    public String getInfo(){
-        return "Model: " + this.model + ", Price: " + this.vehiclePrice + ", Fuel consumption: " + this.fuelConsumption +
+    public String toString(){
+        return "\n" + "Model: " + this.model + ", Price: " + this.vehiclePrice + ", Fuel consumption: " + this.fuelConsumption +
                 ", Body type: " + this.bodyType + ", Class: " + this.taxiClass;
     }
 }
