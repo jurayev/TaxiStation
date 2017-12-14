@@ -14,28 +14,23 @@ import java.util.List;
 public class TaxiStationManipulator {
 
     public void manipulateTaxiStationMainFeatures(){
-        String errors = "";
         TxtFileWriter writer = new TxtFileWriter();
         try {
-            TaxiStation station = new TaxiStation(Adder.addCars());
-            List<Taxi> taxis = station.getTaxis();
+            TaxiStation station = Adder.addCars();
             writer.writeToFile("Taxis: \n" + station.toString(),false);
-            writer.writeToFile("Overall taxis price: \n" + Long.toString(Counter.countCarsPrice(taxis)),true);
-            writer.writeToFile("Sorted taxis: \n" + Sorter.sortCars(taxis).toString(),true);
-            writer.writeToFile(Searcher.searchATaxi(taxis),true);
+            writer.writeToFile("Overall taxis price: \n" + Long.toString(Counter.countCarsPrice(station)),true);
+            writer.writeToFile("Sorted taxis: \n" + Sorter.sortCars(station).toString(),true);
+            writer.writeToFile(Searcher.searchATaxi(station).toString(),true);
         }catch (DataReaderNotFoundException e){
-            errors = e.getMessage();
+            writer.writeToFile(e.getMessage(),false);
         }catch (InvalidListSizeException e) {
-            errors = e.getMessage()+ " Actual number of fields is " + e.getExceptionCause() +
-                    ". Please check an input data and try again!";
+            writer.writeToFile(e.getMessage()+ " Actual number of fields is " + e.getExceptionCause() +
+                    ". Please check an input data and try again!",false);
         }catch (InvalidDataException ide) {
-            errors = ide.getMessage() + "Found: price is " + ide.getExceptionPrice() +
-                    ", consumption is " + ide.getExceptionConsumption();
+            writer.writeToFile(ide.getMessage() + "Found: price is " + ide.getExceptionPrice() +
+                    ", consumption is " + ide.getExceptionConsumption(),false);
         }catch (EmptySearchResultException e) {
-            e.getMessage();
-        }
-        if(!errors.equals("")){
-            writer.writeToFile(errors,false);
+            writer.writeToFile(e.getMessage(),true);
         }
     }
 }
