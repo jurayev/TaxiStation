@@ -8,7 +8,7 @@ public class Runner {
 
     public static void main(String[] args) {
 
-        TaxiStationManipulator creator = new TaxiStationManipulator();
-        creator.manipulateTaxiStationMainFeatures();
+        TaxiStationManipulator manipulator = new TaxiStationManipulator();
+        manipulator.manipulateTaxiStationMainFeatures();
     }
 }
