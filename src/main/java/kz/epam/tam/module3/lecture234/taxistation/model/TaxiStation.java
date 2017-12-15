@@ -7,7 +7,6 @@ public class TaxiStation {
 
     private List<Taxi> taxis = new ArrayList<>();
 
-
     public TaxiStation() {
     }
     public TaxiStation(List<Taxi> taxis) {

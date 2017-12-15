@@ -2,30 +2,24 @@ package kz.epam.tam.module3.lecture234.taxistation.data.readers;
 
 import kz.epam.tam.module3.lecture234.taxistation.model.Taxi;
 import kz.epam.tam.module3.lecture234.taxistation.model.TaxiStation;
+import kz.epam.tam.module3.lecture234.taxistation.property.PropertyProvider;
 import org.apache.derby.jdbc.EmbeddedDriver;
 
 import java.sql.*;
-import java.util.ResourceBundle;
 
 public class DBReader implements IReader{
 
-    private static final ResourceBundle configBundle = ResourceBundle.getBundle("database");
-    private static  final String SQL_SELECT = "SELECT * FROM TAXIS";
-    private String url = configBundle.getString("url");
-    private String login = configBundle.getString("login");
-    private String password = configBundle.getString("password");
-
+    private static final String SQL_SELECT = "SELECT * FROM TAXIS";
 
     public TaxiStation readData(){
-
         TaxiStation taxiStation = new TaxiStation();
         ResultSet rs = null;
         Connection con = null;
         Statement statement = null;
-
         try {
             DriverManager.registerDriver(new EmbeddedDriver());
-            con = DriverManager.getConnection(url,login,password);
+            con = DriverManager.getConnection(PropertyProvider.getProperty("url"),PropertyProvider.getProperty("login"),
+                    PropertyProvider.getProperty("password"));
             statement = con.createStatement();
             rs = statement.executeQuery(SQL_SELECT);
             while (rs.next()){

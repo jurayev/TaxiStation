@@ -3,11 +3,11 @@ package kz.epam.tam.module3.lecture234.taxistation.data.readers;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import kz.epam.tam.module3.lecture234.taxistation.model.TaxiStation;
+import kz.epam.tam.module3.lecture234.taxistation.property.PropertyProvider;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ResourceBundle;
 
 public class JSONReader implements IReader {
 
@@ -16,7 +16,7 @@ public class JSONReader implements IReader {
         BufferedReader reader = null;
         TaxiStation taxiStation = new TaxiStation();
         try {
-            reader = new BufferedReader(new FileReader(ResourceBundle.getBundle("filepath").getString("json")));
+            reader = new BufferedReader(new FileReader(PropertyProvider.getProperty("json")));
             taxiStation = gson.fromJson(reader, TaxiStation.class);
         }catch (IOException|JsonSyntaxException e) {
             e.printStackTrace();

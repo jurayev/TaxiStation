@@ -8,7 +8,6 @@ public class Taxi {
     private String bodyType;
     private String taxiClass;
 
-
     public Taxi(){}
 
     public Taxi(String model, long vehiclePrice, int fuelConsumption, String bodyType, String taxiClass){

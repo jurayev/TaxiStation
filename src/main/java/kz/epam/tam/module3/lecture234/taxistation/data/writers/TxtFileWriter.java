@@ -1,16 +1,17 @@
 package kz.epam.tam.module3.lecture234.taxistation.data.writers;
 
+import kz.epam.tam.module3.lecture234.taxistation.property.PropertyProvider;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ResourceBundle;
 
 public class TxtFileWriter {
 
     public void writeToFile(String data,boolean append) {
         BufferedWriter writer = null;
         try {
-            writer = new BufferedWriter(new FileWriter(ResourceBundle.getBundle("filepath").getString("resultstxt"),append));
+            writer = new BufferedWriter(new FileWriter(PropertyProvider.getProperty("resultstxt"),append));
             writer.write(data);
             writer.newLine();
             writer.newLine();
