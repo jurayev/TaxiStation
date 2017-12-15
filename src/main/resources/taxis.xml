@@ -1,45 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Taxis>
-    <Taxi>
+<taxis>
+    <taxi>
         <model>ford</model>
         <consumption>-1sad0</consumption>
         <btype>sedan</btype>
         <price>40we0sd0</price>
         <class>econom</class>
-    </Taxi>
-    <Taxi>
+    </taxi>
+    <taxi>
         <model>vw</model>
         <consumption>8</consumption>
         <btype>sedan</btype>
         <price>6000</price>
         <class>comfort+</class>
-    </Taxi>
-    <Taxi>
+    </taxi>
+    <taxi>
         <model>opel</model>
         <consumption>9</consumption>
         <btype>hatchback</btype>
         <price>3000</price>
         <class>comfort</class>
-    </Taxi>
-    <Taxi>
+    </taxi>
+    <taxi>
         <model>mazda</model>
         <consumption>15</consumption>
         <btype>vagon</btype>
         <price>7000</price>
         <class>comfort+</class>
-    </Taxi>
-    <Taxi>
+    </taxi>
+    <taxi>
         <model>benz</model>
         <consumption>20</consumption>
         <btype>vagon</btype>
         <price>6000</price>
         <class>business</class>
-    </Taxi>
-    <Taxi>
+    </taxi>
+    <taxi>
         <model>kia</model>
         <consumption>11</consumption>
         <btype>fastback</btype>
         <price>4000</price>
         <class>econom</class>
-    </Taxi>
-</Taxis>
+    </taxi>
+</taxis>
