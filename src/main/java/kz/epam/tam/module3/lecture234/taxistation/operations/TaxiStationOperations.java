@@ -11,7 +11,7 @@ import kz.epam.tam.module3.lecture234.taxistation.model.TaxiStation;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class TaxiStationOperations implements Comparator<Taxi> {
+public class TaxiStationOperations {
 
     private TaxiStation result = new TaxiStation();
 
@@ -47,13 +47,8 @@ public class TaxiStationOperations implements Comparator<Taxi> {
     }
 
     public TaxiStation sortCars(TaxiStation taxiStation){
-        Collections.sort(taxiStation.getTaxis(), new TaxiStationOperations());
+        Collections.sort(taxiStation.getTaxis(), new TaxisComparator());
         return taxiStation;
-    }
-
-    @Override
-    public int compare(Taxi o1, Taxi o2){   ////ascending order
-        return o1.getFuelConsumption() - o2.getFuelConsumption();
     }
 
     public TaxiStation searchATaxi(TaxiStation taxiStation,String param,String value) throws EmptySearchResultException {
@@ -116,6 +111,13 @@ public class TaxiStationOperations implements Comparator<Taxi> {
             if (model.equals(taxi.getModel())) {
                 result.addTaxi(taxi);
             }
+        }
+    }
+
+    private class TaxisComparator implements Comparator<Taxi>{
+        @Override
+        public int compare(Taxi o1, Taxi o2){   ////ascending order
+            return o1.getFuelConsumption() - o2.getFuelConsumption();
         }
     }
 
